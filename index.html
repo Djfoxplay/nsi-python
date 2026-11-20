@@ -1,0 +1,2125 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NSI Python : révisions et entraînement</title>
+<meta name="description" content="Révisions NSI pour le bac (Première et Terminale) : cours détaillés, console Python exécutable dans le navigateur, exercices corrigés automatiquement.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="NSI Python : révisions et entraînement">
+<meta property="og:description" content="Révisions NSI pour le bac (Première et Terminale) : cours détaillés, console Python exécutable dans le navigateur, exercices corrigés automatiquement.">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#0d0d0f">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='5' fill='%230d0d0f'/%3E%3Cpath d='M7 8l4 4-4 4M13 16h4' fill='none' stroke='%23fb923c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com; connect-src 'self' https://cdn.jsdelivr.net; img-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self';">
+
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Geist:wght@400..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" referrerpolicy="no-referrer">
+<script defer src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css" referrerpolicy="no-referrer">
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js" referrerpolicy="no-referrer"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/python/python.min.js" referrerpolicy="no-referrer"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/sql/sql.min.js" referrerpolicy="no-referrer"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js" referrerpolicy="no-referrer"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js" referrerpolicy="no-referrer"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" referrerpolicy="no-referrer"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" referrerpolicy="no-referrer"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" referrerpolicy="no-referrer"></script>
+<script defer src="lessons.js" charset="utf-8"></script>
+<script defer src="exercises.js" charset="utf-8"></script>
+<script defer src="app.js" charset="utf-8"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-view="accueil">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3" /> <path d="M3 5V19A9 3 0 0 0 21 19V5" /> <path d="M3 12A9 3 0 0 0 21 12" /></symbol><symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 5v14" /> <path d="m19 12-7 7-7-7" /></symbol><symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7" /> <path d="M19 12H5" /></symbol><symbol id="i-arrow-left-right" viewBox="0 0 24 24"><path d="M8 3 4 7l4 4" /> <path d="M4 7h16" /> <path d="m16 21 4-4-4-4" /> <path d="M20 17H4" /></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14" /> <path d="m12 5 7 7-7 7" /></symbol><symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7" /> <path d="M12 19V5" /></symbol><symbol id="i-arrow-up-down" viewBox="0 0 24 24"><path d="m21 16-4 4-4-4" /> <path d="M17 20V4" /> <path d="m3 8 4-4 4 4" /> <path d="M7 4v16" /></symbol><symbol id="i-backpack" viewBox="0 0 24 24"><path d="M4 10a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z" /> <path d="M8 10h8" /> <path d="M8 18h8" /> <path d="M8 22v-6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v6" /> <path d="M9 6V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2" /></symbol><symbol id="i-book-open" viewBox="0 0 24 24"><path d="M12 7v14" /> <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" /></symbol><symbol id="i-brain" viewBox="0 0 24 24"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z" /> <path d="M12 5a3 3 0 1 1 5.997.125 4 4 0 0 1 2.526 5.77 4 4 0 0 1-.556 6.588A4 4 0 1 1 12 18Z" /> <path d="M15 13a4.5 4.5 0 0 1-3-4 4.5 4.5 0 0 1-3 4" /> <path d="M17.599 6.5a3 3 0 0 0 .399-1.375" /> <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5" /> <path d="M3.477 10.896a4 4 0 0 1 .585-.396" /> <path d="M19.938 10.5a4 4 0 0 1 .585.396" /> <path d="M6 18a4 4 0 0 1-1.967-.516" /> <path d="M19.967 17.484A4 4 0 0 1 18 18" /></symbol><symbol id="i-brick-wall" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2" /> <path d="M12 9v6" /> <path d="M16 15v6" /> <path d="M16 3v6" /> <path d="M3 15h18" /> <path d="M3 9h18" /> <path d="M8 15v6" /> <path d="M8 3v6" /></symbol><symbol id="i-bug" viewBox="0 0 24 24"><path d="m8 2 1.88 1.88" /> <path d="M14.12 3.88 16 2" /> <path d="M9 7.13v-1a3.003 3.003 0 1 1 6 0v1" /> <path d="M12 20c-3.3 0-6-2.7-6-6v-3a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v3c0 3.3-2.7 6-6 6" /> <path d="M12 20v-9" /> <path d="M6.53 9C4.6 8.8 3 7.1 3 5" /> <path d="M6 13H2" /> <path d="M3 21c0-2.1 1.7-3.9 3.8-4" /> <path d="M20.97 5c0 2.1-1.6 3.8-3.5 4" /> <path d="M22 13h-4" /> <path d="M17.2 17c2.1.1 3.8 1.9 3.8 4" /></symbol><symbol id="i-calculator" viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2" /> <line x1="8" x2="16" y1="6" y2="6" /> <line x1="16" x2="16" y1="14" y2="18" /> <path d="M16 10h.01" /> <path d="M12 10h.01" /> <path d="M8 10h.01" /> <path d="M12 14h.01" /> <path d="M8 14h.01" /> <path d="M12 18h.01" /> <path d="M8 18h.01" /></symbol><symbol id="i-chart-column" viewBox="0 0 24 24"><path d="M3 3v16a2 2 0 0 0 2 2h16" /> <path d="M18 17V9" /> <path d="M13 17V5" /> <path d="M8 17v-3" /></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></symbol><symbol id="i-circle-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /> <path d="m9 12 2 2 4-4" /></symbol><symbol id="i-circle-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /> <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /> <path d="M12 17h.01" /></symbol><symbol id="i-circle-x" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /> <path d="m15 9-6 6" /> <path d="m9 9 6 6" /></symbol><symbol id="i-clipboard-list" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1" ry="1" /> <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" /> <path d="M12 11h4" /> <path d="M12 16h4" /> <path d="M8 11h.01" /> <path d="M8 16h.01" /></symbol><symbol id="i-coins" viewBox="0 0 24 24"><circle cx="8" cy="8" r="6" /> <path d="M18.09 10.37A6 6 0 1 1 10.34 18" /> <path d="M7 6h1v4" /> <path d="m16.71 13.88.7.71-2.82 2.82" /></symbol><symbol id="i-compass" viewBox="0 0 24 24"><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z" /> <circle cx="12" cy="12" r="10" /></symbol><symbol id="i-divide" viewBox="0 0 24 24"><circle cx="12" cy="6" r="1" /> <line x1="5" x2="19" y1="12" y2="12" /> <circle cx="12" cy="18" r="1" /></symbol><symbol id="i-dna" viewBox="0 0 24 24"><path d="m10 16 1.5 1.5" /> <path d="m14 8-1.5-1.5" /> <path d="M15 2c-1.798 1.998-2.518 3.995-2.807 5.993" /> <path d="m16.5 10.5 1 1" /> <path d="m17 6-2.891-2.891" /> <path d="M2 15c6.667-6 13.333 0 20-6" /> <path d="m20 9 .891.891" /> <path d="M3.109 14.109 4 15" /> <path d="m6.5 12.5 1 1" /> <path d="m7 18 2.891 2.891" /> <path d="M9 22c1.798-1.998 2.518-3.995 2.807-5.993" /></symbol><symbol id="i-door-open" viewBox="0 0 24 24"><path d="M13 4h3a2 2 0 0 1 2 2v14" /> <path d="M2 20h3" /> <path d="M13 20h9" /> <path d="M10 12v.01" /> <path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z" /></symbol><symbol id="i-download" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <polyline points="7 10 12 15 17 10" /> <line x1="12" x2="12" y1="15" y2="3" /></symbol><symbol id="i-file-text" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" /> <path d="M14 2v4a2 2 0 0 0 2 2h4" /> <path d="M10 9H8" /> <path d="M16 13H8" /> <path d="M16 17H8" /></symbol><symbol id="i-flame" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" /></symbol><symbol id="i-flask-conical" viewBox="0 0 24 24"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2" /> <path d="M6.453 15h11.094" /> <path d="M8.5 2h7" /></symbol><symbol id="i-folders" viewBox="0 0 24 24"><path d="M20 17a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3.9a2 2 0 0 1-1.69-.9l-.81-1.2a2 2 0 0 0-1.67-.9H8a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2Z" /> <path d="M2 8v11a2 2 0 0 0 2 2h14" /></symbol><symbol id="i-git-branch" viewBox="0 0 24 24"><line x1="6" x2="6" y1="3" y2="15" /> <circle cx="18" cy="6" r="3" /> <circle cx="6" cy="18" r="3" /> <path d="M18 9a9 9 0 0 1-9 9" /></symbol><symbol id="i-git-compare" viewBox="0 0 24 24"><circle cx="18" cy="18" r="3" /> <circle cx="6" cy="6" r="3" /> <path d="M13 6h3a2 2 0 0 1 2 2v7" /> <path d="M11 18H8a2 2 0 0 1-2-2V9" /></symbol><symbol id="i-grid-3x3" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2" /> <path d="M3 9h18" /> <path d="M3 15h18" /> <path d="M9 3v18" /> <path d="M15 3v18" /></symbol><symbol id="i-hand" viewBox="0 0 24 24"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2" /> <path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2" /> <path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8" /> <path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15" /></symbol><symbol id="i-hash" viewBox="0 0 24 24"><line x1="4" x2="20" y1="9" y2="9" /> <line x1="4" x2="20" y1="15" y2="15" /> <line x1="10" x2="8" y1="3" y2="21" /> <line x1="16" x2="14" y1="3" y2="21" /></symbol><symbol id="i-hourglass" viewBox="0 0 24 24"><path d="M5 22h14" /> <path d="M5 2h14" /> <path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22" /> <path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2" /></symbol><symbol id="i-key" viewBox="0 0 24 24"><path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4" /> <path d="m21 2-9.6 9.6" /> <circle cx="7.5" cy="15.5" r="5.5" /></symbol><symbol id="i-keyboard" viewBox="0 0 24 24"><path d="M10 8h.01" /> <path d="M12 12h.01" /> <path d="M14 8h.01" /> <path d="M16 12h.01" /> <path d="M18 8h.01" /> <path d="M6 8h.01" /> <path d="M7 16h10" /> <path d="M8 12h.01" /> <rect width="20" height="16" x="2" y="4" rx="2" /></symbol><symbol id="i-layers" viewBox="0 0 24 24"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z" /> <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12" /> <path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17" /></symbol><symbol id="i-library" viewBox="0 0 24 24"><path d="m16 6 4 14" /> <path d="M12 6v14" /> <path d="M8 8v12" /> <path d="M4 4v16" /></symbol><symbol id="i-lightbulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" /> <path d="M9 18h6" /> <path d="M10 22h4" /></symbol><symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /> <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" /></symbol><symbol id="i-lock-open" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2" /> <path d="M7 11V7a5 5 0 0 1 9.9-1" /></symbol><symbol id="i-map" viewBox="0 0 24 24"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z" /> <path d="M15 5.764v15" /> <path d="M9 3.236v15" /></symbol><symbol id="i-message-square" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></symbol><symbol id="i-network" viewBox="0 0 24 24"><rect x="16" y="16" width="6" height="6" rx="1" /> <rect x="2" y="16" width="6" height="6" rx="1" /> <rect x="9" y="2" width="6" height="6" rx="1" /> <path d="M5 16v-3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3" /> <path d="M12 12V8" /></symbol><symbol id="i-package" viewBox="0 0 24 24"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z" /> <path d="M12 22V12" /> <path d="m3.3 7 7.703 4.734a2 2 0 0 0 1.994 0L20.7 7" /> <path d="m7.5 4.27 9 5.15" /></symbol><symbol id="i-pencil" viewBox="0 0 24 24"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z" /> <path d="m15 5 4 4" /></symbol><symbol id="i-play" viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21 6 3" /></symbol><symbol id="i-plug" viewBox="0 0 24 24"><path d="M12 22v-5" /> <path d="M9 8V2" /> <path d="M15 8V2" /> <path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z" /></symbol><symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14" /> <path d="M12 5v14" /></symbol><symbol id="i-printer" viewBox="0 0 24 24"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" /> <path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6" /> <rect x="6" y="14" width="12" height="8" rx="1" /></symbol><symbol id="i-puzzle" viewBox="0 0 24 24"><path d="M15.39 4.39a1 1 0 0 0 1.68-.474 2.5 2.5 0 1 1 3.014 3.015 1 1 0 0 0-.474 1.68l1.683 1.682a2.414 2.414 0 0 1 0 3.414L19.61 15.39a1 1 0 0 1-1.68-.474 2.5 2.5 0 1 0-3.014 3.015 1 1 0 0 1 .474 1.68l-1.683 1.682a2.414 2.414 0 0 1-3.414 0L8.61 19.61a1 1 0 0 0-1.68.474 2.5 2.5 0 1 1-3.014-3.015 1 1 0 0 0 .474-1.68l-1.683-1.682a2.414 2.414 0 0 1 0-3.414L4.39 8.61a1 1 0 0 1 1.68.474 2.5 2.5 0 1 0 3.014-3.015 1 1 0 0 1-.474-1.68l1.683-1.682a2.414 2.414 0 0 1 3.414 0z" /></symbol><symbol id="i-refresh-cw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8" /> <path d="M21 3v5h-5" /> <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" /> <path d="M8 16H3v5" /></symbol><symbol id="i-repeat" viewBox="0 0 24 24"><path d="m17 2 4 4-4 4" /> <path d="M3 11v-1a4 4 0 0 1 4-4h14" /> <path d="m7 22-4-4 4-4" /> <path d="M21 13v1a4 4 0 0 1-4 4H3" /></symbol><symbol id="i-rotate-cw" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" /> <path d="M21 3v5h-5" /></symbol><symbol id="i-ruler" viewBox="0 0 24 24"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.41 2.41 0 0 1 0-3.4l2.6-2.6a2.41 2.41 0 0 1 3.4 0Z" /> <path d="m14.5 12.5 2-2" /> <path d="m11.5 9.5 2-2" /> <path d="m8.5 6.5 2-2" /> <path d="m17.5 15.5 2-2" /></symbol><symbol id="i-scale" viewBox="0 0 24 24"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /> <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" /> <path d="M7 21h10" /> <path d="M12 3v18" /> <path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2" /></symbol><symbol id="i-scissors" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3" /> <path d="M8.12 8.12 12 12" /> <path d="M20 4 8.12 15.88" /> <circle cx="6" cy="18" r="3" /> <path d="M14.8 14.8 20 20" /></symbol><symbol id="i-scroll-text" viewBox="0 0 24 24"><path d="M15 12h-5" /> <path d="M15 8h-5" /> <path d="M19 17V5a2 2 0 0 0-2-2H4" /> <path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3" /></symbol><symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8" /> <path d="m21 21-4.3-4.3" /></symbol><symbol id="i-settings" viewBox="0 0 24 24"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" /> <circle cx="12" cy="12" r="3" /></symbol><symbol id="i-shell" viewBox="0 0 24 24"><path d="M14 11a2 2 0 1 1-4 0 4 4 0 0 1 8 0 6 6 0 0 1-12 0 8 8 0 0 1 16 0 10 10 0 1 1-20 0 11.93 11.93 0 0 1 2.42-7.22 2 2 0 1 1 3.16 2.44" /></symbol><symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /></symbol><symbol id="i-shuffle" viewBox="0 0 24 24"><path d="m18 14 4 4-4 4" /> <path d="m18 2 4 4-4 4" /> <path d="M2 18h1.973a4 4 0 0 0 3.3-1.7l5.454-8.6a4 4 0 0 1 3.3-1.7H22" /> <path d="M2 6h1.972a4 4 0 0 1 3.6 2.2" /> <path d="M22 18h-6.041a4 4 0 0 1-3.3-1.8l-.359-.45" /></symbol><symbol id="i-sliders-horizontal" viewBox="0 0 24 24"><line x1="21" x2="14" y1="4" y2="4" /> <line x1="10" x2="3" y1="4" y2="4" /> <line x1="21" x2="12" y1="12" y2="12" /> <line x1="8" x2="3" y1="12" y2="12" /> <line x1="21" x2="16" y1="20" y2="20" /> <line x1="12" x2="3" y1="20" y2="20" /> <line x1="14" x2="14" y1="2" y2="6" /> <line x1="8" x2="8" y1="10" y2="14" /> <line x1="16" x2="16" y1="18" y2="22" /></symbol><symbol id="i-snail" viewBox="0 0 24 24"><path d="M2 13a6 6 0 1 0 12 0 4 4 0 1 0-8 0 2 2 0 0 0 4 0" /> <circle cx="10" cy="13" r="8" /> <path d="M2 21h12c4.4 0 8-3.6 8-8V7a2 2 0 1 0-4 0v6" /> <path d="M18 3 19.1 5.2" /> <path d="M22 3 20.9 5.2" /></symbol><symbol id="i-spade" viewBox="0 0 24 24"><path d="M5 9c-1.5 1.5-3 3.2-3 5.5A5.5 5.5 0 0 0 7.5 20c1.8 0 3-.5 4.5-2 1.5 1.5 2.7 2 4.5 2a5.5 5.5 0 0 0 5.5-5.5c0-2.3-1.5-4-3-5.5l-7-7-7 7Z" /> <path d="M12 18v4" /></symbol><symbol id="i-sprout" viewBox="0 0 24 24"><path d="M7 20h10" /> <path d="M10 20c5.5-2.5.8-6.4 3-10" /> <path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z" /> <path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z" /></symbol><symbol id="i-tag" viewBox="0 0 24 24"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z" /> <circle cx="7.5" cy="7.5" r=".5" fill="currentColor" /></symbol><symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /> <circle cx="12" cy="12" r="6" /> <circle cx="12" cy="12" r="2" /></symbol><symbol id="i-timer" viewBox="0 0 24 24"><line x1="10" x2="14" y1="2" y2="2" /> <line x1="12" x2="15" y1="14" y2="11" /> <circle cx="12" cy="14" r="8" /></symbol><symbol id="i-trending-up" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17" /> <polyline points="16 7 22 7 22 13" /></symbol><symbol id="i-triangle-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3" /> <path d="M12 9v4" /> <path d="M12 17h.01" /></symbol><symbol id="i-trophy" viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" /> <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" /> <path d="M4 22h16" /> <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" /> <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" /> <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" /></symbol><symbol id="i-type" viewBox="0 0 24 24"><polyline points="4 7 4 4 20 4 20 7" /> <line x1="9" x2="15" y1="20" y2="20" /> <line x1="12" x2="12" y1="4" y2="20" /></symbol><symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /> <polyline points="17 8 12 3 7 8" /> <line x1="12" x2="12" y1="3" y2="15" /></symbol><symbol id="i-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" /></symbol><symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18" /> <path d="m6 6 12 12" /></symbol><symbol id="i-zap" viewBox="0 0 24 24"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" /></symbol><symbol id="i-dot" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="currentColor" stroke="none"/></symbol></defs></svg>
+
+<div class="loader done" id="loader" aria-hidden="true" data-testid="intro-loader">
+  <div class="loader-word"><span>NSI</span> <span style="animation-delay:.08s;color:var(--primary)">.py</span></div>
+  <div class="loader-count" id="loader-count">000</div>
+  <div class="loader-bar"><i></i></div>
+</div>
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"><span id="cursor-label">Glisser</span></div>
+
+<!-- NAV -->
+<header class="nav" id="nav" data-testid="main-navbar">
+  <a class="nav-logo" href="#accueil" data-nav="accueil" data-testid="nav-logo"><span class="nav-logo-mark"></span>NSI <em>Python</em></a>
+  <nav class="nav-links" aria-label="Navigation principale">
+    <span class="nav-pill" id="nav-pill" aria-hidden="true" style="opacity: 0; width: 71px; transform: translateX(83px);"></span>
+    <a class="nav-link nav-item" href="#accueil" data-nav="accueil" data-testid="nav-link-accueil">Accueil</a>
+    <a class="nav-link nav-item" href="#cours" data-nav="cours" data-testid="nav-link-cours">Cours</a>
+    <a class="nav-link nav-item" href="#exercices" data-nav="exercices" data-testid="nav-link-exercices">Exercices</a>
+    <a class="nav-link nav-item" href="#cheatsheet" data-nav="cheatsheet" data-testid="nav-link-cheatsheet">Cheat Sheet</a>
+  </nav>
+  <div class="side-chapters" id="side-chapters" aria-label="Chapitres"></div>
+  <a class="nav-cta" href="#console" data-nav="console" data-magnetic="" data-testid="nav-cta-console"><span class="live"></span>Console Python</a>
+  <button class="nav-burger" id="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu" data-testid="mobile-menu-toggle"><i></i><i></i></button>
+</header>
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true" data-testid="mobile-menu">
+  <a href="#accueil" data-nav="accueil" tabindex="-1"><small>01</small>Accueil</a>
+  <a href="#cours" data-nav="cours" tabindex="-1"><small>02</small>Cours</a>
+  <a href="#exercices" data-nav="exercices" tabindex="-1"><small>03</small>Exercices</a>
+  <a href="#cheatsheet" data-nav="cheatsheet" tabindex="-1"><small>04</small>Cheat Sheet</a>
+  <a href="#console" data-nav="console" tabindex="-1"><small>05</small>Console</a>
+</div>
+
+<main class="main" id="main">
+
+  <!-- HERO -->
+  <section class="hero" id="hero" data-testid="hero-section">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-lines"></div>
+      <div class="hero-orb a"></div>
+      <div class="hero-orb b"></div>
+      <div class="hero-halo" id="hero-halo"></div>
+    </div>
+    <div class="hero-stack" aria-hidden="true" id="hero-stack">
+      <div class="mini g" data-l="Débutant"><span><svg class=ico aria-hidden=true><use href=#i-sprout></use></svg></span></div>
+      <div class="mini v" data-l="Difficile"><span><svg class=ico aria-hidden=true><use href=#i-rotate-cw></use></svg></span></div>
+      <div class="mini o" data-l="Intermédiaire"><span><svg class=ico aria-hidden=true><use href=#i-search></use></svg></span></div>
+    </div>
+    <div class="wrap">
+      <h1 class="hero-title" aria-label="Révise Python" data-testid="hero-title">
+        <span class="row" data-split="">Révise</span>
+        <span class="row py" data-split="">Python</span>
+      </h1>
+      <div class="hero-bottom">
+        <div>
+          <p class="hero-lead intro-fade">Tous les chapitres vus en classe, expliqués <strong>du niveau débutant à intermédiaire</strong>. Entraîne-toi avec des exercices et code directement dans la console intégrée.</p>
+          <div class="hero-actions intro-fade">
+            <a class="btn btn-primary" href="#accueil" data-nav="cours" data-magnetic="" data-testid="hero-cta-start">Commencer <span class="arrow"><svg class=ico aria-hidden=true><use href=#i-arrow-right></use></svg></span></a>
+            <a class="btn btn-ghost" href="#exercices" data-nav="exercices" data-magnetic="" data-testid="hero-cta-exercises">S'entraîner <span class="arrow"><svg class=ico aria-hidden=true><use href=#i-arrow-right></use></svg></span></a>
+          </div>
+        </div>
+        <div class="hero-stats intro-fade" data-testid="hero-stats">
+          <div class="stat"><span class="stat-num" data-count="22">22</span><span class="stat-label">Chapitres</span></div>
+          <div class="stat"><span class="stat-num" data-count="100" data-prefix="+" id="stat-exos">+100</span><span class="stat-label">Exercices</span></div>
+          
+          <div class="stat"><span class="stat-num" data-count="3">3</span><span class="stat-label">Niveaux</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">Défiler</div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Listes</span><span>Fonctions</span><span>Tris</span><span>Dichotomie</span><span>Dictionnaires</span><span>POO</span><span>Piles &amp; Files</span><span>Récursivité</span><span>Arbres</span><span>Graphes</span><span>Prog. dynamique</span>
+    </div>
+  </div>
+
+  <!-- COURS (carrousel) -->
+  <section class="cc-section section" id="section-cours" data-testid="section-cours">
+    <div class="cc-pin">
+      <div class="cc-bg" aria-hidden="true">
+        <div class="cc-bg-layer" data-par="0.009"><div class="cc-bg-drift cc-bg-fond"></div></div>
+        <div class="cc-bg-layer" data-par="0.02"><div class="cc-bg-drift cc-bg-glyphes"></div></div>
+        <div class="cc-bg-layer" data-par="0.035"><div class="cc-bg-drift cc-bg-code"></div></div>
+      </div>
+      <div class="wrap cc-head">
+        <div>
+          <h2 class="block-title">Cours</h2>
+        </div>
+        <div class="cc-counter" aria-live="polite"><b id="cours-idx" data-testid="cours-carousel-index">18</b>/ 21 <button class="cc-skip" data-nav="exercices" data-testid="cours-skip-btn">Passer <svg class=ico aria-hidden=true><use href=#i-arrow-down></use></svg></button></div>
+      </div>
+      <div class="cc-stage" id="cours-stage" tabindex="0" role="region" aria-roledescription="carrousel" aria-label="Chapitres du cours : flèches gauche et droite pour naviguer, Entrée pour ouvrir" data-cursor-label="Glisser" data-testid="cours-carousel" style="--cw: 288.6923076923077px; --ch: 375.3px;"><div class="cc-item" data-level-tone="debutant" data-testid="cours-card-bases" style="visibility: hidden; transform: translate3d(-841px, 0px, -510px) rotateY(62deg) scale(0.9); filter: none; opacity: 0.02; z-index: 64; --vel: 0.000;"><div class="cc-smear" style="opacity: 0.22;"></div><div class="cc-card"><div class="cc-label">Chapitre 00<small>Débutant</small></div><div class="cc-figure" aria-hidden="true"><svg class=ico aria-hidden=true><use href=#i-sprout></use></svg><i><svg class=ico aria-hidden=true><use href=#i-sprout></use></svg></i><i><svg class=ico aria-hidden=true><use href=#i-sprout></use></svg></i></div><div class="cc-foot"><div class="cc-title">Les Bases de Python</div><div class="cc-desc">Variables, conditions et boucles pour débuter.</div><button class="cc-open" tabindex="-1" data-testid="cours-open-bases">Ouvrir le chapitre <svg class=ico aria-hidden=true><use href=#i-arrow-right></use></svg></button></div></div></div><div class="cc-item" data-level-tone="debutant" data-testid="cours-card-listes" style="visibility: hidden; transform: translate3d(-640.6px, 0px, -439px) rotateY(62deg) scale(0.9); filter: none; opacity: 1; z-index: 74; --vel: 0.000;"><div class="cc-smear" style="opacity: 0.22;"></div><div class="cc-card"><div class="cc-label">Chapitre 01<small>Débutant</small></div><div class="cc-figure" aria-hidden="true"><svg class=ico aria-hidden=true><use href=#i-clipboard-list></use></svg><i><svg class=ico aria-hidden=true><use href=#i-clipboard-list></use></svg></i><i><svg class=ico aria-hidden=true><use href=#i-clipboard-list></use></svg></i></div><div class="cc-foot"><div class="cc-title">Les Listes</div><div class="cc-desc">Créer, parcourir et manipuler une liste.</div><button class="cc-open" tabindex="-1" data-testid="cours-open-listes">Ouvrir le chapitre <svg class=ico aria-hidden=true><use href=#i-arrow-right></use></svg></button></div></div></div><div class="cc-item" data-level-tone="debutant" data-testid="cours-card-fonctions" style="visibility: hidden; transform: translate3d(-685.7px, 0px, -477.3px) rotateY(62deg) scale(0.9); filter: none; opacity: 0.79; z-index: 72; --vel: 0.000;"><div class="cc-smear" style="opacity: 0.22;"></div><div class="cc-card"><div class="cc-label">Chapitre 02<small>Débutant</small></div><div class="cc-figure" aria-hidden="true"><svg class=ico aria-hidden=true><use href=#i-wrench></use></svg><i><svg class=ico aria-hidden=true><use href=#i-wrench></use></svg></i><i><svg class=ico aria-hidden=true><use href=#i-wrench></use></svg></i></div><div class="cc-foot"><div class="cc-title">Les Fonctions</div><div class="cc-desc"><code>def</code>, paramètres, <code>return</code>.</div><button class="cc-open" tabindex="-1" data-testid="cours-open-fonctions">Ouvrir le chapitre <svg class=ico aria-hidden=true><use href=#i-arrow-right></use></svg></button></div></div></div><div class="cc-item" data-level-tone="difficile" data-testid="cours-card-tri" style="visibility: hidden; transform: translate3d(-485.2px, 0px, -307.3px) rotateY(61.46deg) scale(0.91); filter: none; opacity: 1; z-index: 82; --vel: 0.000;"><div class="cc-smear" style="opacity: 0.22;"></div><div class="cc-card"><div class="cc-label">Chapitre 03<small>Difficile</small></div><div class="cc-figure" aria-hidden="true"><svg class=ico aria-hidden=true><use href=#i-shuffle></use></svg><i><svg class=ico aria-hidden=true><use href=#i-shuffle></use></svg></i><i><svg class=ico aria-hidden=true><use href=#i-shuffle></use></svg></i></div><div class="cc-foot"><div class="cc-title">Tris</div><div class="cc-desc">Insertion &amp; Sélection.</div><button class="cc-open" tabindex="-1" data-testid="cours-open-tri">Ouvrir le chapitre <svg class=ico aria-hidden=true><use href=#i-arrow-right></use></svg></button></div></div></div><div class="cc-item" data-level-tone="intermediaire" data-testid="cours-card-recherche" style="visibility: hidden; transform: translate3d(-782.4px, 0px, -510px) rotateY(62deg) scale(0.9); filter: none; opacity: 0.31; z-index: 67; --vel: 0.000;"><div class="cc-smear" style="opacity: 0.22;"></div><div class="cc-card"><div class="cc-label">Chapitre 04<small>Intermédiaire</small></div><div class="cc-figure" aria-hidden="true"><svg class=ico aria-hidden=true><use href=#i-search></use></svg><i><svg class=ico aria-hidden=true><use href=#i-search></use></svg></i><i><svg class=ico aria-hidden=true><use href=#i-search></use></svg></i></div><div class="cc-foot"><div class="cc-title">Recherche &amp; Dichotomie</div><div class="cc-desc">Séquentielle vs binaire.</div><button class="cc-open" tabindex="-1" data-testid="cours-open-recherche">Ouvrir le chapitre <svg class=ico aria-hidden=true><use href=#i-arrow-right></use></svg></button></div></div></div><div class="cc-item" data-level-tone="debutant" data-testid="cours-card-stats" style="visibility: hidden; transform: translate3d(-802.5px, 0px, -510px) rotateY(62deg) scale(0.9); filter: none; opacity: 0.21; z-index: 66; --vel: 0.000;"><div class="cc-smear" style="opacity: 0.22;"></div><div class="cc-card"><div class="cc-label">Chapitre 05<small>Débutant</small></div><div class="cc-figure" aria-hidden="true"><svg class=ico aria-hidden=true><use href=#i-chart-column></use></svg><i><svg class=ico aria-hidden=true><use href=#i-chart-column></use></svg></i><i><svg class=ico aria-hidden=true><use href=#i-chart-column></use></svg></i></div><div class="cc-foot"><div class="cc-title">Min, Max, Moyenne</div><div class="cc-desc">Statistiques sur une liste.</div><button class="cc-open" tabindex="-1" data-testid="cours-open-stats">Ouvrir le chapitre <svg class=ico aria-hidden=true><use href=#i-arrow-right></use></svg></button></div></div></div><div class="cc-item" data-level-tone="intermediaire" data-testid="cours-card-comprehension" style="visibility: hidden; transform: translate3d(-692.2px, 0px, -482.8px) rotateY(62deg) scale(0.9); filter: none; opacity: 0.76; z-index: 72; --vel: 0.000;"><div class="cc-smear" style="opacity: 0.22;"></div><div class="cc-card"><div class="cc-label">Chapitre 06<small>Intermédiaire</small></div><div class="cc-figure" aria-hidden="true"><svg class=ico aria-hidden=true><use href=#i-zap></use></svg><i><svg class=ico aria-hidden=true><use href=#i-zap></use></svg></i><i><svg class=ico aria-hidden=true><use href=#i-zap></use></svg></i></div><div class="cc-foot"><div class="cc-title">Compréhension</div><div class="cc-desc">Listes en une ligne.</div><button class="cc-open" tabindex="-1" data-testid="cours-open-comprehension">Ouvrir le chapitre <svg class=ico aria-hidden=true><use href=#i-arrow-right></use></svg></button></div></div></div><div class="cc-item" data-level-tone="intermediaire" data-testid="cours-card-tableaux" style="visibility: hidden; transform: translate3d(-831px, 0px, -510px) rotateY(62deg) scale(0.9); filter: none; opacity: 0.07; z-index: 65; --vel: 0.000;"><div class="cc-smear" style="opacity: 0.22;"></div><div class="cc-card"><div class="cc-label">Chapitre 07<small>Intermédiaire</small></div><div class="cc-figure" aria-hidden="true"><svg class=ico aria-hidden=true><use href=#i-grid-3x3></use></svg><i><svg class=ico aria-hidden=true><use href=#i-grid-3x3></use></svg></i><i><svg class=ico aria-hidden=true><use href=#i-grid-3x3></use></svg></i></div><div class="cc-foot"><div class="cc-title">Tableaux 2D</div><div class="cc-desc">Listes de listes.</div><button class="cc-open" tabindex="-1" data-testid="cours-open-tableaux">Ouvrir le chapitre <svg class=ico aria-hidden=true><use href=#i-arrow-right></use></svg></button></div></div></div><div class="cc-item" data-level-tone="debutant" data-testid="cours-card-texte" style="visibility: hidden; transform: translate3d(-815.5px, 0px, -510px) rotateY(62deg) scale(0.9); filter: none; opacity: 0.15; z-index: 65; --vel: 0.000;"><div class="cc-smear" style="opacity: 0.22;"></div><div class="cc-card"><div class="cc-label">Chapitre 08<small>Débutant</small></div><div class="cc-figure" aria-hidden="true"><svg class=ico aria-hidden=true><use href=#i-message-square></use></svg><i><svg class=ico aria-hidden=true><use href=#i-message-square></use></svg></i><i><svg class=ico aria-hidden=true><use href=#i-message-square></use></svg></i></div><div class="cc-foot"><div class="cc-title">Texte &amp; Lettres</div><div class="cc-desc">Chaînes et comptage.</div><button class="cc-open" tabindex="-1" data-testid="cours-open-texte">Ouvrir le chapitre <svg class=ico aria-hidden=true><use href=#i-arrow-right></use></svg></button></div></div></div><div class="cc-item" data-level-tone="intermediaire" data-testid="cours-card-dico" style="visibility: hidden; transform: translate3d(-787.9px, 0px, -510px) rotateY(62deg) scale(0.9); filter: none; opacity: 0.28; z-index: 67; --vel: 0.000;"><div class="cc-smear" style="opacity: 0.22;"></div><div class="cc-card"><div class="cc-label">Chapitre 09<small>Intermédiaire</small></div><div class="cc-figure" aria-hidden="true"><svg class=ico aria-hidden=true><use href=#i-library></use></svg><i><svg class=ico aria-hidden=true><use href=#i-library></use></svg></i><i><svg class=ico aria-hidden=true><use href=#i-library></use></svg></i></div><div class="cc-foot"><div class="cc-title">Dictionnaires</div><div class="cc-desc">Clé-valeur en Python.</div><button class="cc-open" tabindex="-1" data-testid="cours-open-dico">Ouvrir le chapitre <svg class=ico aria-hidden=true><use href=#i-arrow-right></use></svg></button></div></div></div><div class="cc-item" data-level-tone="debutant" data-testid="cours-card-modules" style="visibility: hidden; transform: translate3d(-791.9px, 0px, -510px) rotateY(62deg) scale(0.9); filter: none; opacity: 0.26; z-index: 67; --vel: 0.000;"><div class="cc-smear" style="opacity: 0.22;"></div><div class="cc-card"><div class="cc-label">Chapitre 10<small>Débutant</small></div><div class="cc-figure" aria-hidden="true"><svg class=ico aria-hidden=true><use href=#i-package></use></svg><i><svg class=ico aria-hidden=true><use href=#i-package></use></svg></i><i><svg class=ico aria-hidden=true><use href=#i-package></use></svg></i></div><div class="cc-foot"><div class="cc-title">Les Modules</div><div class="cc-desc">Modules de la bibliothèque standard.</div><button class="cc-open" tabindex="-1" data-testid="cours-open-modules">Ouvrir le chapitre <svg class=ico aria-hidden=true><use href=#i-arrow-right></use></svg></button></div></div></div><div class="cc-item" data-level-tone="intermediaire" data-testid="cours-card-poo" style="visibility: hidden; transform: translate3d(-775.4px, 0px, -510px) rotateY(62deg) scale(0.9); filter: none; opacity: 0.34; z-index: 67; --vel: 0.000;"><div class="cc-smear" style="opacity: 0.22;"></div><div class="cc-card"><div class="cc-label">Chapitre 11<small>Intermédiaire</small></div><div class="cc-figure" aria-hidden="true"><svg class=ico aria-hidden=true><use href=#i-dna></use></svg><i><svg class=ico aria-hidden=true><use href=#i-dna></use></svg></i><i><svg class=ico aria-hidden=true><use href=#i-dna></use></svg></i></div><div class="cc-foot"><div class="cc-title">Classes et POO</div><div class="cc-desc">Classes, objets, attributs, méthodes.</div><button class="cc-open" tabindex="-1" data-testid="cours-open-poo">Ouvrir le chapitre <svg class=ico aria-hidden=true><use href=#i-arrow-right></use></svg></button></div></div></div><div class="cc-item" data-level-tone="intermediaire" data-testid="cours-card-pilesfiles" style="visibility: hidden; transform: translate3d(-731.8px, 0px, -510px) rotateY(62deg) scale(0.9); filter: none; opacity: 0.56; z-index: 70; --vel: 0.000;"><div class="cc-smear" style="opacity: 0.22;"></div><div class="cc-card"><div class="cc-label">Chapitre 12<small>Intermédiaire</small></div><div class="cc-figure" aria-hidden="true"><svg class=ico aria-hidden=true><use href=#i-layers></use></svg><i><svg class=ico aria-hidden=true><use href=#i-layers></use></svg></i><i><svg class=ico aria-hidden=true><use href=#i-layers></use></svg></i></div><div class="cc-foot"><div class="cc-title">Piles et Files</div><div class="cc-desc">LIFO vs FIFO, empiler/dépiler.</div><button class="cc-open" tabindex="-1" data-testid="cours-open-pilesfiles">Ouvrir le chapitre <svg class=ico aria-hidden=true><use href=#i-arrow-right></use></svg></button></div></div></div><div class="cc-item" data-level-tone="intermediaire" data-testid="cours-card-interfaces" style="visibility: hidden; transform: translate3d(-825px, 0px, -510px) rotateY(62deg) scale(0.9); filter: none; opacity: 0.1; z-index: 65; --vel: 0.000;"><div class="cc-smear" style="opacity: 0.22;"></div><div class="cc-card"><div class="cc-label">Chapitre 13<small>Intermédiaire</small></div><div class="cc-figure" aria-hidden="true"><svg class=ico aria-hidden=true><use href=#i-plug></use></svg><i><svg class=ico aria-hidden=true><use href=#i-plug></use></svg></i><i><svg class=ico aria-hidden=true><use href=#i-plug></use></svg></i></div><div class="cc-foot"><div class="cc-title">Interfaces et Implémentation</div><div class="cc-desc">Ce qu'on peut faire vs comment c'est codé.</div><button class="cc-open" tabindex="-1" data-testid="cours-open-interfaces">Ouvrir le chapitre <svg class=ico aria-hidden=true><use href=#i-arrow-right></use></svg></button></div></div></div><div class="cc-item" data-level-tone="difficile" data-testid="cours-card-recursivite" style="visibility: visible; transform: translate3d(-724.3px, 0px, -510px) rotateY(62deg) scale(0.9); filter: none; opacity: 0.6; z-index: 70; --vel: 0.000;"><div class="cc-smear" style="opacity: 0.22;"></div><div class="cc-card"><div class="cc-label">Chapitre 14<small>Difficile</small></div><div class="cc-figure" aria-hidden="true"><svg class=ico aria-hidden=true><use href=#i-rotate-cw></use></svg><i><svg class=ico aria-hidden=true><use href=#i-rotate-cw></use></svg></i><i><svg class=ico aria-hidden=true><use href=#i-rotate-cw></use></svg></i></div><div class="cc-foot"><div class="cc-title">Récursivité</div><div class="cc-desc">Une fonction qui s'appelle elle-même.</div><button class="cc-open" tabindex="-1" data-testid="cours-open-recursivite">Ouvrir le chapitre <svg class=ico aria-hidden=true><use href=#i-arrow-right></use></svg></button></div></div></div><div class="cc-item" data-level-tone="difficile" data-testid="cours-card-arbres" style="visibility: visible; transform: translate3d(-523.8px, 0px, -340px) rotateY(62deg) scale(0.9); filter: none; opacity: 1; z-index: 80; --vel: 0.000;"><div class="cc-smear" style="opacity: 0.22;"></div><div class="cc-card"><div class="cc-label">Chapitre 15<small>Difficile</small></div><div class="cc-figure" aria-hidden="true"><svg class=ico aria-hidden=true><use href=#i-git-branch></use></svg><i><svg class=ico aria-hidden=true><use href=#i-git-branch></use></svg></i><i><svg class=ico aria-hidden=true><use href=#i-git-branch></use></svg></i></div><div class="cc-foot"><div class="cc-title">Arbres Binaires</div><div class="cc-desc">Parcours d'arbres et ABR.</div><button class="cc-open" tabindex="-1" data-testid="cours-open-arbres">Ouvrir le chapitre <svg class=ico aria-hidden=true><use href=#i-arrow-right></use></svg></button></div></div></div><div class="cc-item" data-level-tone="intermediaire" data-testid="cours-card-modularite" style="visibility: visible; transform: translate3d(-323.3px, 0px, -170px) rotateY(34deg) scale(0.95); filter: none; opacity: 1; z-index: 90; --vel: 0.000;"><div class="cc-smear" style="opacity: 0.22;"></div><div class="cc-card"><div class="cc-label">Chapitre 16<small>Intermédiaire</small></div><div class="cc-figure" aria-hidden="true"><svg class=ico aria-hidden=true><use href=#i-puzzle></use></svg><i><svg class=ico aria-hidden=true><use href=#i-puzzle></use></svg></i><i><svg class=ico aria-hidden=true><use href=#i-puzzle></use></svg></i></div><div class="cc-foot"><div class="cc-title">Modularité</div><div class="cc-desc">Créer et importer ses propres modules.</div><button class="cc-open" tabindex="-1" data-testid="cours-open-modularite">Ouvrir le chapitre <svg class=ico aria-hidden=true><use href=#i-arrow-right></use></svg></button></div></div></div><div class="cc-item is-center" data-level-tone="intermediaire" data-testid="cours-card-paradigmes" style="visibility: visible; transform: translate3d(0px, 0px, 0px) rotateY(0deg) scale(1); filter: none; opacity: 1; z-index: 100; --vel: 0.000;"><div class="cc-smear" style="opacity: 0;"></div><div class="cc-card"><div class="cc-label">Chapitre 17<small>Intermédiaire</small></div><div class="cc-figure" aria-hidden="true"><svg class=ico aria-hidden=true><use href=#i-compass></use></svg><i><svg class=ico aria-hidden=true><use href=#i-compass></use></svg></i><i><svg class=ico aria-hidden=true><use href=#i-compass></use></svg></i></div><div class="cc-foot"><div class="cc-title">Paradigme de Programmation</div><div class="cc-desc">Impératif, objet, fonctionnel.</div><button class="cc-open" tabindex="-1" data-testid="cours-open-paradigmes">Ouvrir le chapitre <svg class=ico aria-hidden=true><use href=#i-arrow-right></use></svg></button></div></div></div><div class="cc-item" data-level-tone="difficile" data-testid="cours-card-trifusion" style="visibility: visible; transform: translate3d(323.3px, 0px, -170px) rotateY(-34deg) scale(0.95); filter: none; opacity: 1; z-index: 90; --vel: 0.000;"><div class="cc-smear" style="opacity: 0.22;"></div><div class="cc-card"><div class="cc-label">Chapitre 18<small>Difficile</small></div><div class="cc-figure" aria-hidden="true"><svg class=ico aria-hidden=true><use href=#i-divide></use></svg><i><svg class=ico aria-hidden=true><use href=#i-divide></use></svg></i><i><svg class=ico aria-hidden=true><use href=#i-divide></use></svg></i></div><div class="cc-foot"><div class="cc-title">Tri Fusion</div><div class="cc-desc">Diviser pour régner, en <code>O(n log n)</code>.</div><button class="cc-open" tabindex="-1" data-testid="cours-open-trifusion">Ouvrir le chapitre <svg class=ico aria-hidden=true><use href=#i-arrow-right></use></svg></button></div></div></div><div class="cc-item" data-level-tone="difficile" data-testid="cours-card-graphes" style="visibility: visible; transform: translate3d(523.8px, 0px, -340px) rotateY(-62deg) scale(0.9); filter: none; opacity: 1; z-index: 80; --vel: 0.000;"><div class="cc-smear" style="opacity: 0.22;"></div><div class="cc-card"><div class="cc-label">Chapitre 19<small>Difficile</small></div><div class="cc-figure" aria-hidden="true"><svg class=ico aria-hidden=true><use href=#i-network></use></svg><i><svg class=ico aria-hidden=true><use href=#i-network></use></svg></i><i><svg class=ico aria-hidden=true><use href=#i-network></use></svg></i></div><div class="cc-foot"><div class="cc-title">Graphes</div><div class="cc-desc">Sommets, arêtes, parcours, Dijkstra.</div><button class="cc-open" tabindex="-1" data-testid="cours-open-graphes">Ouvrir le chapitre <svg class=ico aria-hidden=true><use href=#i-arrow-right></use></svg></button></div></div></div><div class="cc-item" data-level-tone="difficile" data-testid="cours-card-progdynamique" style="visibility: visible; transform: translate3d(724.3px, 0px, -510px) rotateY(-62deg) scale(0.9); filter: none; opacity: 0.6; z-index: 70; --vel: 0.000;"><div class="cc-smear" style="opacity: 0.22;"></div><div class="cc-card"><div class="cc-label">Chapitre 20<small>Avancé</small></div><div class="cc-figure" aria-hidden="true"><svg class=ico aria-hidden=true><use href=#i-brain></use></svg><i><svg class=ico aria-hidden=true><use href=#i-brain></use></svg></i><i><svg class=ico aria-hidden=true><use href=#i-brain></use></svg></i></div><div class="cc-foot"><div class="cc-title">Prog. Dynamique</div><div class="cc-desc">Mémoïsation et tabulation.</div><button class="cc-open" tabindex="-1" data-testid="cours-open-progdynamique">Ouvrir le chapitre <svg class=ico aria-hidden=true><use href=#i-arrow-right></use></svg></button></div></div></div></div>
+      <div class="cc-hint">
+        <button class="cc-arrow" data-dir="-1" aria-label="Chapitre précédent" data-testid="cours-prev-btn"><svg class=ico aria-hidden=true><use href=#i-arrow-left></use></svg></button>
+        <span>Glisse, scrolle ou utilise <svg class=ico aria-hidden=true><use href=#i-arrow-left></use></svg> <svg class=ico aria-hidden=true><use href=#i-arrow-right></use></svg></span>
+        <button class="cc-arrow" data-dir="1" aria-label="Chapitre suivant" data-testid="cours-next-btn"><svg class=ico aria-hidden=true><use href=#i-arrow-right></use></svg></button>
+      </div>
+      <div class="cc-progress"><i style="transform: scaleX(0.85);"></i></div>
+      <div class="cc-vignette"></div>
+    </div>
+  </section>
+
+  <!-- EXERCICES -->
+  <section class="block section" id="section-exercices" data-testid="section-exercices">
+    <div class="wrap">
+      <div class="block-head">
+        <div>
+          <h2 class="block-title"><span class="split-line"><span data-line="">Exercices</span></span></h2>
+        </div>
+        <p class="block-desc in" data-reveal="">Résous les exercices directement dans la mini-console. Bloqué ? Utilise l'indice, puis la solution si besoin. Filtre par thème et par niveau pour t'entraîner précisément.<br><br>PS : le thème Bases (10 étapes) accompagne <mark>« Les Bases de Python »</mark>.</p>
+      </div>
+    <div class="exo-filters">
+      <div class="filter-row">
+        <span class="filter-row-label">Thème</span>
+        <button class="filter-btn active" data-theme="tous" onclick="filterByTheme('tous')" data-testid="filter-theme-tous">Tous</button>
+        <button class="filter-btn" data-theme="bases" onclick="filterByTheme('bases')" data-testid="filter-theme-bases"><svg class=ico aria-hidden=true><use href=#i-sprout></use></svg> Bases</button>
+        <button class="filter-btn" data-theme="listes" onclick="filterByTheme('listes')" data-testid="filter-theme-listes"><svg class=ico aria-hidden=true><use href=#i-clipboard-list></use></svg> Listes</button>
+        <button class="filter-btn" data-theme="tri" onclick="filterByTheme('tri')" data-testid="filter-theme-tri"><svg class=ico aria-hidden=true><use href=#i-shuffle></use></svg> Tri</button>
+        <button class="filter-btn" data-theme="recherche" onclick="filterByTheme('recherche')" data-testid="filter-theme-recherche"><svg class=ico aria-hidden=true><use href=#i-search></use></svg> Recherche</button>
+        <button class="filter-btn" data-theme="stats" onclick="filterByTheme('stats')" data-testid="filter-theme-stats"><svg class=ico aria-hidden=true><use href=#i-chart-column></use></svg> Statistiques</button>
+        <button class="filter-btn" data-theme="erreur" onclick="filterByTheme('erreur')" data-testid="filter-theme-erreur"><svg class=ico aria-hidden=true><use href=#i-bug></use></svg> Correction d'erreur</button>
+        <button class="filter-btn" data-theme="dico" onclick="filterByTheme('dico')" data-testid="filter-theme-dico"><svg class=ico aria-hidden=true><use href=#i-library></use></svg> Dictionnaires</button>
+        <button class="filter-btn" data-theme="tableaux" onclick="filterByTheme('tableaux')" data-testid="filter-theme-tableaux"><svg class=ico aria-hidden=true><use href=#i-grid-3x3></use></svg> Tableaux 2D</button>
+        <button class="filter-btn" data-theme="problemes" onclick="filterByTheme('problemes')" data-testid="filter-theme-problemes"><svg class=ico aria-hidden=true><use href=#i-puzzle></use></svg> Problèmes</button>
+      </div>
+      <div class="filter-row">
+        <span class="filter-row-label">Niveau</span>
+        <button class="filter-btn active" data-level="tous" onclick="filterByLevel('tous')" data-testid="filter-level-tous">Tous</button>
+        <button class="filter-btn" data-level="debutant" onclick="filterByLevel('debutant')" data-testid="filter-level-debutant"><svg class=ico style=color:var(--accent3) aria-hidden=true><use href=#i-dot></use></svg> Débutant</button>
+        <button class="filter-btn" data-level="intermediaire" onclick="filterByLevel('intermediaire')" data-testid="filter-level-intermediaire"><svg class=ico style=color:var(--accent4) aria-hidden=true><use href=#i-dot></use></svg> Intermédiaire</button>
+        <button class="filter-btn" data-level="difficile" onclick="filterByLevel('difficile')" data-testid="filter-level-difficile"><svg class=ico style=color:var(--red) aria-hidden=true><use href=#i-dot></use></svg> Difficile</button>
+      </div>
+    </div>
+    <div class="exo-count" id="exo-count">35 exercices affichés</div>
+      <div class="exo-grid" data-testid="exercise-grid">
+    <!-- THÈME : BASES -->
+
+    <!-- EXERCISE 1 -->
+    <div class="exercise-card in" data-theme="bases" data-level="debutant" data-reveal="" data-testid="exercise-card-ex1">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 01</span>
+        <span class="card-level debutant">Débutant</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-sprout></use></svg> Bases</span>
+      </div>
+      <div class="exercise-title">Pair ou impair</div>
+      <div class="exercise-desc">
+        Écris une fonction <code>est_pair(n)</code> qui retourne <code>True</code> si <code>n</code> est pair, <code>False</code> sinon. Utilise l'opérateur modulo <code>%</code>. Teste avec <code>n = 7</code> et <code>n = 12</code>.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex1')" data-testid="run-btn-ex1"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex1" onclick="validateExercise('ex1')" data-testid="validate-btn-ex1"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex1" spellcheck="false"># Pair ou impair
+def est_pair(n):
+    pass  # À toi de jouer !
+
+print("7 est pair :", est_pair(7))
+print("12 est pair :", est_pair(12))
+</textarea>
+        <div class="mini-output empty" id="out-ex1" data-testid="out-ex1">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex1" data-testid="report-ex1"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex1" onclick="toggleHint('ex1')" data-testid="hint-btn-ex1"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex1" onclick="toggleSolution('ex1')" data-testid="solution-btn-ex1"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex1">
+        <strong>Indice :</strong> <code>n % 2</code> donne le reste de la division de <code>n</code> par 2. Si ce reste est <code>0</code>, le nombre est pair.
+      </div>
+      <div class="solution-box" id="solution-ex1">
+        <span class="solution-label">Solution</span>
+<pre>def est_pair(n):
+    return n % 2 == 0</pre>
+      </div>
+    </div>
+
+    <!-- EXERCISE 2 -->
+    <div class="exercise-card in" data-theme="bases" data-level="debutant" data-reveal="" data-testid="exercise-card-ex2">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 02</span>
+        <span class="card-level debutant">Débutant</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-sprout></use></svg> Bases</span>
+      </div>
+      <div class="exercise-title">Compter de 1 à n</div>
+      <div class="exercise-desc">
+        Écris une fonction <code>compte_jusqu_a(n)</code> qui affiche tous les nombres de 1 à <code>n</code> (inclus), un par ligne, avec <code>print()</code>. Teste avec <code>n = 5</code>.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex2')" data-testid="run-btn-ex2"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex2" onclick="validateExercise('ex2')" data-testid="validate-btn-ex2"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex2" spellcheck="false"># Compter de 1 à n
+def compte_jusqu_a(n):
+    pass  # À toi de jouer !
+
+compte_jusqu_a(5)
+</textarea>
+        <div class="mini-output empty" id="out-ex2" data-testid="out-ex2">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex2" data-testid="report-ex2"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex2" onclick="toggleHint('ex2')" data-testid="hint-btn-ex2"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex2" onclick="toggleSolution('ex2')" data-testid="solution-btn-ex2"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex2">
+        <strong>Indice :</strong> utilise <code>for i in range(1, n + 1):</code>, n'oublie pas le <code>+ 1</code>, sinon le dernier nombre sera exclu !
+      </div>
+      <div class="solution-box" id="solution-ex2">
+        <span class="solution-label">Solution</span>
+<pre>def compte_jusqu_a(n):
+    for i in range(1, n + 1):
+        print(i)
+
+compte_jusqu_a(5)</pre>
+      </div>
+    </div>
+
+    <!-- EXERCISE 3 -->
+    <div class="exercise-card in" data-theme="bases" data-level="intermediaire" data-reveal="" data-testid="exercise-card-ex3">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 03</span>
+        <span class="card-level intermediaire">Intermédiaire</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-sprout></use></svg> Bases</span>
+      </div>
+      <div class="exercise-title">Table de multiplication</div>
+      <div class="exercise-desc">
+        Écris une fonction <code>table(n)</code> qui affiche la table de multiplication de <code>n</code>, de <code>n × 1</code> à <code>n × 10</code>, sous la forme <code>"n x i = résultat"</code>. Teste avec <code>n = 7</code>.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex3')" data-testid="run-btn-ex3"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex3" onclick="validateExercise('ex3')" data-testid="validate-btn-ex3"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex3" spellcheck="false"># Table de multiplication
+def table(n):
+    pass  # À toi de jouer !
+
+table(7)
+</textarea>
+        <div class="mini-output empty" id="out-ex3" data-testid="out-ex3">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex3" data-testid="report-ex3"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex3" onclick="toggleHint('ex3')" data-testid="hint-btn-ex3"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex3" onclick="toggleSolution('ex3')" data-testid="solution-btn-ex3"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex3">
+        <strong>Indice :</strong> boucle avec <code>for i in range(1, 11)</code>, puis utilise <code>print(n, "x", i, "=", n * i)</code> à chaque tour.
+      </div>
+      <div class="solution-box" id="solution-ex3">
+        <span class="solution-label">Solution</span>
+<pre>def table(n):
+    for i in range(1, 11):
+        print(n, "x", i, "=", n * i)
+
+table(7)</pre>
+      </div>
+    </div>
+
+    <!-- THÈME : LISTES -->
+
+    <!-- EXERCISE 4 -->
+    <div class="exercise-card in" data-theme="listes" data-level="debutant" data-reveal="" data-testid="exercise-card-ex4">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 04</span>
+        <span class="card-level debutant">Débutant</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-clipboard-list></use></svg> Listes</span>
+      </div>
+      <div class="exercise-title">Trouver le maximum</div>
+      <div class="exercise-desc">
+        Écris une fonction <code>mon_max(L)</code> qui retourne l'élément le plus grand d'une liste, <strong>sans utiliser</strong> la fonction Python <code>max()</code>. Teste avec <code>L = [5, 12, 3, 99, 47]</code>.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex4')" data-testid="run-btn-ex4"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex4" onclick="validateExercise('ex4')" data-testid="validate-btn-ex4"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex4" spellcheck="false"># Écris ta solution ici
+def mon_max(L):
+    pass  # À toi de jouer !
+
+L = [5, 12, 3, 99, 47]
+print("Maximum :", mon_max(L))
+</textarea>
+        <div class="mini-output empty" id="out-ex4" data-testid="out-ex4">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex4" data-testid="report-ex4"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex4" onclick="toggleHint('ex4')" data-testid="hint-btn-ex4"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex4" onclick="toggleSolution('ex4')" data-testid="solution-btn-ex4"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex4">
+        <strong>Indice :</strong> commence par supposer que le premier élément <code>L[0]</code> est le maximum. Parcours ensuite la liste avec une boucle <code>for</code> et, à chaque fois que tu trouves un élément plus grand, mets à jour la variable.
+      </div>
+      <div class="solution-box" id="solution-ex4">
+        <span class="solution-label">Solution</span>
+<pre>def mon_max(L):
+    maximum = L[0]
+    for i in range(len(L)):
+        if L[i] &gt; maximum:
+            maximum = L[i]
+    return maximum</pre>
+      </div>
+    </div>
+
+    <!-- EXERCISE 5 -->
+    <div class="exercise-card in" data-theme="listes" data-level="debutant" data-reveal="" data-testid="exercise-card-ex5">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 05</span>
+        <span class="card-level debutant">Débutant</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-clipboard-list></use></svg> Listes</span>
+      </div>
+      <div class="exercise-title">Trouver le minimum</div>
+      <div class="exercise-desc">
+        Écris une fonction <code>mon_min(L)</code> qui retourne l'élément le plus petit d'une liste, <strong>sans utiliser</strong> <code>min()</code>. Teste avec <code>L = [34, 8, 21, 3, 56, 12]</code>.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex5')" data-testid="run-btn-ex5"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex5" onclick="validateExercise('ex5')" data-testid="validate-btn-ex5"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex5" spellcheck="false"># Écris ta solution ici
+def mon_min(L):
+    pass  # À toi de jouer !
+
+L = [34, 8, 21, 3, 56, 12]
+print("Minimum :", mon_min(L))
+</textarea>
+        <div class="mini-output empty" id="out-ex5" data-testid="out-ex5">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex5" data-testid="report-ex5"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex5" onclick="toggleHint('ex5')" data-testid="hint-btn-ex5"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex5" onclick="toggleSolution('ex5')" data-testid="solution-btn-ex5"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex5">
+        <strong>Indice :</strong> c'est le principe inverse de la recherche du maximum. Suppose que <code>L[0]</code> est le minimum, puis remplace-le chaque fois que tu trouves un élément plus petit.
+      </div>
+      <div class="solution-box" id="solution-ex5">
+        <span class="solution-label">Solution</span>
+<pre>def mon_min(L):
+    minimum = L[0]
+    for i in range(len(L)):
+        if L[i] &lt; minimum:
+            minimum = L[i]
+    return minimum</pre>
+      </div>
+    </div>
+
+    <!-- EXERCISE 6 -->
+    <div class="exercise-card in" data-theme="listes" data-level="debutant" data-reveal="" data-testid="exercise-card-ex6">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 06</span>
+        <span class="card-level debutant">Débutant</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-clipboard-list></use></svg> Listes</span>
+      </div>
+      <div class="exercise-title">Somme des éléments</div>
+      <div class="exercise-desc">
+        Écris une fonction <code>somme(L)</code> qui retourne la somme de tous les éléments d'une liste, <strong>sans utiliser</strong> <code>sum()</code>. Teste avec <code>L = [4, 8, 15, 16, 23, 42]</code>.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex6')" data-testid="run-btn-ex6"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex6" onclick="validateExercise('ex6')" data-testid="validate-btn-ex6"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex6" spellcheck="false"># Écris ta solution ici
+def somme(L):
+    pass  # À toi de jouer !
+
+L = [4, 8, 15, 16, 23, 42]
+print("Somme :", somme(L))
+</textarea>
+        <div class="mini-output empty" id="out-ex6" data-testid="out-ex6">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex6" data-testid="report-ex6"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex6" onclick="toggleHint('ex6')" data-testid="hint-btn-ex6"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex6" onclick="toggleSolution('ex6')" data-testid="solution-btn-ex6"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex6">
+        <strong>Indice :</strong> initialise une variable <code>total = 0</code>, puis ajoute chaque élément de la liste à cette variable avec une boucle <code>for</code>.
+      </div>
+      <div class="solution-box" id="solution-ex6">
+        <span class="solution-label">Solution</span>
+<pre>def somme(L):
+    total = 0
+    for x in L:
+        total = total + x
+    return total</pre>
+      </div>
+    </div>
+
+    <!-- EXERCISE 7 -->
+    <div class="exercise-card in" data-theme="listes" data-level="intermediaire" data-reveal="" data-testid="exercise-card-ex7">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 07</span>
+        <span class="card-level intermediaire">Intermédiaire</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-clipboard-list></use></svg> Listes</span>
+      </div>
+      <div class="exercise-title">Inverser une liste</div>
+      <div class="exercise-desc">
+        Écris une fonction <code>inverse(L)</code> qui retourne une nouvelle liste avec les éléments de <code>L</code> dans l'ordre inverse, <strong>sans utiliser</strong> <code>reversed()</code> ni le slicing <code>[::-1]</code>. Teste avec <code>L = [1, 2, 3, 4, 5]</code>.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex7')" data-testid="run-btn-ex7"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex7" onclick="validateExercise('ex7')" data-testid="validate-btn-ex7"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex7" spellcheck="false"># Écris ta solution ici
+def inverse(L):
+    resultat = []
+    pass  # À toi de jouer !
+
+L = [1, 2, 3, 4, 5]
+print("Inversée :", inverse(L))
+</textarea>
+        <div class="mini-output empty" id="out-ex7" data-testid="out-ex7">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex7" data-testid="report-ex7"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex7" onclick="toggleHint('ex7')" data-testid="hint-btn-ex7"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex7" onclick="toggleSolution('ex7')" data-testid="solution-btn-ex7"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex7">
+        <strong>Indice :</strong> parcours la liste <code>L</code> <strong>à l'envers</strong> avec <code>for i in range(len(L) - 1, -1, -1)</code>, et ajoute chaque élément à <code>resultat</code> avec <code>.append()</code>.
+      </div>
+      <div class="solution-box" id="solution-ex7">
+        <span class="solution-label">Solution</span>
+<pre>def inverse(L):
+    resultat = []
+    for i in range(len(L) - 1, -1, -1):
+        resultat.append(L[i])
+    return resultat</pre>
+      </div>
+    </div>
+
+    <!-- THÈME : TRI -->
+
+    <!-- EXERCISE 8 -->
+    <div class="exercise-card in" data-theme="tri" data-level="intermediaire" data-reveal="" data-testid="exercise-card-ex8">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 08</span>
+        <span class="card-level intermediaire">Intermédiaire</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-shuffle></use></svg> Tri</span>
+      </div>
+      <div class="exercise-title">Tri à bulles</div>
+      <div class="exercise-desc">
+        Implémente le <strong>tri à bulles</strong> : on parcourt la liste et on échange deux éléments adjacents si ils sont dans le mauvais ordre. Répète jusqu'à ce que la liste soit triée. Teste avec <code>L = [64, 34, 25, 12, 22, 11, 90]</code>.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex8')" data-testid="run-btn-ex8"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex8" onclick="validateExercise('ex8')" data-testid="validate-btn-ex8"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex8" spellcheck="false"># Tri à bulles
+def tri_bulles(L):
+    n = len(L)
+    pass  # Complète l'algorithme
+
+L = [64, 34, 25, 12, 22, 11, 90]
+print("Liste triée :", tri_bulles(L))
+</textarea>
+        <div class="mini-output empty" id="out-ex8" data-testid="out-ex8">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex8" data-testid="report-ex8"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex8" onclick="toggleHint('ex8')" data-testid="hint-btn-ex8"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex8" onclick="toggleSolution('ex8')" data-testid="solution-btn-ex8"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex8">
+        <strong>Indice :</strong> utilise deux boucles <code>for</code> imbriquées. La boucle intérieure compare chaque paire d'éléments adjacents <code>L[j]</code> et <code>L[j+1]</code> ; si <code>L[j] &gt; L[j+1]</code>, échange-les avec <code>L[j], L[j+1] = L[j+1], L[j]</code>.
+      </div>
+      <div class="solution-box" id="solution-ex8">
+        <span class="solution-label">Solution</span>
+<pre>def tri_bulles(L):
+    n = len(L)
+    for i in range(n):
+        for j in range(0, n - i - 1):
+            if L[j] &gt; L[j + 1]:
+                L[j], L[j + 1] = L[j + 1], L[j]
+    return L</pre>
+      </div>
+    </div>
+
+    <!-- EXERCISE 9 -->
+    <div class="exercise-card in" data-theme="tri" data-level="intermediaire" data-reveal="" data-testid="exercise-card-ex9">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 09</span>
+        <span class="card-level intermediaire">Intermédiaire</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-shuffle></use></svg> Tri</span>
+      </div>
+      <div class="exercise-title">Tri par sélection</div>
+      <div class="exercise-desc">
+        Implémente le <strong>tri par sélection</strong> : à chaque étape, trouve l'indice du plus petit élément restant et échange-le avec l'élément en position courante. Teste avec <code>L = [29, 10, 14, 37, 14]</code>.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex9')" data-testid="run-btn-ex9"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex9" onclick="validateExercise('ex9')" data-testid="validate-btn-ex9"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex9" spellcheck="false"># Tri par sélection
+def tri_selection(L):
+    lg = len(L)
+    pass  # Complète l'algorithme
+
+L = [29, 10, 14, 37, 14]
+print("Liste triée :", tri_selection(L))
+</textarea>
+        <div class="mini-output empty" id="out-ex9" data-testid="out-ex9">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex9" data-testid="report-ex9"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex9" onclick="toggleHint('ex9')" data-testid="hint-btn-ex9"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex9" onclick="toggleSolution('ex9')" data-testid="solution-btn-ex9"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex9">
+        <strong>Indice :</strong> pour chaque position <code>i</code>, suppose que le minimum est à l'indice <code>i</code>, puis cherche dans le reste de la liste s'il existe un élément plus petit. À la fin, échange <code>L[i]</code> et <code>L[minimum]</code>.
+      </div>
+      <div class="solution-box" id="solution-ex9">
+        <span class="solution-label">Solution</span>
+<pre>def tri_selection(L):
+    lg = len(L)
+    for i in range(lg):
+        minimum = i
+        for j in range(i + 1, lg):
+            if L[j] &lt; L[minimum]:
+                minimum = j
+        L[i], L[minimum] = L[minimum], L[i]
+    return L</pre>
+      </div>
+    </div>
+
+    <!-- EXERCISE 10 : DIFFICILE -->
+    <div class="exercise-card in" data-theme="tri" data-level="difficile" data-reveal="" data-testid="exercise-card-ex10">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 10</span>
+        <span class="card-level difficile">Difficile</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-shuffle></use></svg> Tri</span>
+      </div>
+      <div class="exercise-title">Fusion de deux listes triées</div>
+      <div class="exercise-desc">
+        Écris une fonction <code>fusion(L1, L2)</code> qui fusionne deux listes <strong>déjà triées</strong> en une seule liste triée, <strong>sans utiliser</strong> <code>sorted()</code> ni <code>.sort()</code>. Teste avec <code>L1 = [1, 4, 7, 10]</code> et <code>L2 = [2, 3, 8, 9, 15]</code>.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex10')" data-testid="run-btn-ex10"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex10" onclick="validateExercise('ex10')" data-testid="validate-btn-ex10"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex10" spellcheck="false"># Fusion de deux listes triées
+def fusion(L1, L2):
+    resultat = []
+    i, j = 0, 0
+    pass  # À toi de jouer !
+
+L1 = [1, 4, 7, 10]
+L2 = [2, 3, 8, 9, 15]
+print("Fusion :", fusion(L1, L2))
+</textarea>
+        <div class="mini-output empty" id="out-ex10" data-testid="out-ex10">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex10" data-testid="report-ex10"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex10" onclick="toggleHint('ex10')" data-testid="hint-btn-ex10"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex10" onclick="toggleSolution('ex10')" data-testid="solution-btn-ex10"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex10">
+        <strong>Indice :</strong> utilise deux index <code>i</code> et <code>j</code>. Compare <code>L1[i]</code> et <code>L2[j]</code>, ajoute le plus petit au résultat en avançant son index. Puis ajoute les éléments restants avec <code>resultat += L1[i:]</code> et <code>resultat += L2[j:]</code>.
+      </div>
+      <div class="solution-box" id="solution-ex10">
+        <span class="solution-label">Solution</span>
+<pre>def fusion(L1, L2):
+    resultat = []
+    i, j = 0, 0
+    while i &lt; len(L1) and j &lt; len(L2):
+        if L1[i] &lt;= L2[j]:
+            resultat.append(L1[i])
+            i += 1
+        else:
+            resultat.append(L2[j])
+            j += 1
+    resultat += L1[i:]
+    resultat += L2[j:]
+    return resultat</pre>
+      </div>
+    </div>
+
+    <!-- THÈME : RECHERCHE -->
+
+    <!-- EXERCISE 11 -->
+    <div class="exercise-card" data-theme="recherche" data-level="debutant" data-reveal="" data-testid="exercise-card-ex11">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 11</span>
+        <span class="card-level debutant">Débutant</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-search></use></svg> Recherche</span>
+      </div>
+      <div class="exercise-title">Recherche séquentielle</div>
+      <div class="exercise-desc">
+        Écris une fonction <code>cherche(L, x)</code> qui retourne l'indice de la première occurrence de <code>x</code> dans <code>L</code>, ou <code>-1</code> si <code>x</code> n'est pas dans la liste. Teste avec <code>L = [12, 45, 7, 89, 23]</code> et <code>x = 89</code>.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex11')" data-testid="run-btn-ex11"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex11" onclick="validateExercise('ex11')" data-testid="validate-btn-ex11"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex11" spellcheck="false"># Recherche séquentielle
+def cherche(L, x):
+    pass  # À toi de jouer !
+
+L = [12, 45, 7, 89, 23]
+print("Indice de 89 :", cherche(L, 89))
+print("Indice de 100 :", cherche(L, 100))
+</textarea>
+        <div class="mini-output empty" id="out-ex11" data-testid="out-ex11">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex11" data-testid="report-ex11"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex11" onclick="toggleHint('ex11')" data-testid="hint-btn-ex11"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex11" onclick="toggleSolution('ex11')" data-testid="solution-btn-ex11"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex11">
+        <strong>Indice :</strong> parcours la liste avec <code>for i in range(len(L))</code>. Si <code>L[i] == x</code>, retourne <code>i</code>. Si la boucle se termine sans trouver, retourne <code>-1</code>.
+      </div>
+      <div class="solution-box" id="solution-ex11">
+        <span class="solution-label">Solution</span>
+<pre>def cherche(L, x):
+    for i in range(len(L)):
+        if L[i] == x:
+            return i
+    return -1</pre>
+      </div>
+    </div>
+
+    <!-- EXERCISE 12 -->
+    <div class="exercise-card" data-theme="recherche" data-level="intermediaire" data-reveal="" data-testid="exercise-card-ex12">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 12</span>
+        <span class="card-level intermediaire">Intermédiaire</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-search></use></svg> Recherche</span>
+      </div>
+      <div class="exercise-title">Recherche dichotomique</div>
+      <div class="exercise-desc">
+        Implémente la recherche dichotomique dans une liste <strong>déjà triée</strong>. Retourne l'indice de l'élément cherché, ou <code>-1</code>. Teste en cherchant <code>x = 55</code> dans <code>L = [2, 10, 23, 40, 55, 71, 88]</code>.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex12')" data-testid="run-btn-ex12"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex12" onclick="validateExercise('ex12')" data-testid="validate-btn-ex12"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex12" spellcheck="false"># Recherche dichotomique
+def dicho(L, x):
+    pass  # À toi de jouer !
+
+L = [2, 10, 23, 40, 55, 71, 88]
+print("Indice de 55 :", dicho(L, 55))
+print("Indice de 99 :", dicho(L, 99))
+</textarea>
+        <div class="mini-output empty" id="out-ex12" data-testid="out-ex12">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex12" data-testid="report-ex12"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex12" onclick="toggleHint('ex12')" data-testid="hint-btn-ex12"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex12" onclick="toggleSolution('ex12')" data-testid="solution-btn-ex12"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex12">
+        <strong>Indice :</strong> garde deux bornes <code>debut</code> et <code>fin</code>. Calcule <code>milieu = (debut + fin) // 2</code>. Compare <code>L[milieu]</code> à <code>x</code> et réduis l'intervalle de moitié.
+      </div>
+      <div class="solution-box" id="solution-ex12">
+        <span class="solution-label">Solution</span>
+<pre>def dicho(L, x):
+    debut = 0
+    fin = len(L) - 1
+    while debut &lt;= fin:
+        milieu = (debut + fin) // 2
+        if L[milieu] == x:
+            return milieu
+        elif x &lt; L[milieu]:
+            fin = milieu - 1
+        else:
+            debut = milieu + 1
+    return -1</pre>
+      </div>
+    </div>
+
+    <!-- EXERCISE 13 : DIFFICILE -->
+    <div class="exercise-card in" data-theme="recherche" data-level="difficile" data-reveal="" data-testid="exercise-card-ex13">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 13</span>
+        <span class="card-level difficile">Difficile</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-search></use></svg> Recherche</span>
+      </div>
+      <div class="exercise-title">Élément manquant</div>
+      <div class="exercise-desc">
+        Une liste contient tous les nombres de <code>1</code> à <code>n</code> <strong>sauf un</strong>. Écris <code>manquant(L, n)</code> qui retourne le nombre manquant, en une seule passe. Teste avec <code>L = [1, 2, 4, 5, 6]</code> et <code>n = 6</code> (résultat : <code>3</code>).
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex13')" data-testid="run-btn-ex13"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex13" onclick="validateExercise('ex13')" data-testid="validate-btn-ex13"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex13" spellcheck="false"># Élément manquant
+def manquant(L, n):
+    pass  # À toi de jouer !
+
+L = [1, 2, 4, 5, 6]
+print("Manquant :", manquant(L, 6))
+</textarea>
+        <div class="mini-output empty" id="out-ex13" data-testid="out-ex13">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex13" data-testid="report-ex13"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex13" onclick="toggleHint('ex13')" data-testid="hint-btn-ex13"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex13" onclick="toggleSolution('ex13')" data-testid="solution-btn-ex13"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex13">
+        <strong>Indice :</strong> la somme des nombres de 1 à <code>n</code> vaut <code>n * (n + 1) // 2</code> (formule de Gauss). Soustrais la somme réelle des éléments de <code>L</code> à cette somme théorique.
+      </div>
+      <div class="solution-box" id="solution-ex13">
+        <span class="solution-label">Solution</span>
+<pre>def manquant(L, n):
+    somme_theorique = n * (n + 1) // 2
+    somme_reelle = sum(L)
+    return somme_theorique - somme_reelle</pre>
+      </div>
+    </div>
+
+    <!-- THÈME : STATISTIQUES -->
+
+    <!-- EXERCISE 14 -->
+    <div class="exercise-card in" data-theme="stats" data-level="debutant" data-reveal="" data-testid="exercise-card-ex14">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 14</span>
+        <span class="card-level debutant">Débutant</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-chart-column></use></svg> Statistiques</span>
+      </div>
+      <div class="exercise-title">Calculer la moyenne</div>
+      <div class="exercise-desc">
+        Écris une fonction <code>moyenne(L)</code> qui retourne la moyenne des éléments d'une liste. Teste avec <code>L = [10, 14, 18, 12, 16]</code>. Résultat attendu : <code>14.0</code>.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex14')" data-testid="run-btn-ex14"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex14" onclick="validateExercise('ex14')" data-testid="validate-btn-ex14"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex14" spellcheck="false"># Écris ta solution ici
+def moyenne(L):
+    pass  # Remplace pass par ton code
+
+L = [10, 14, 18, 12, 16]
+print("Moyenne :", moyenne(L))
+</textarea>
+        <div class="mini-output empty" id="out-ex14" data-testid="out-ex14">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex14" data-testid="report-ex14"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex14" onclick="toggleHint('ex14')" data-testid="hint-btn-ex14"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex14" onclick="toggleSolution('ex14')" data-testid="solution-btn-ex14"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex14">
+        <strong>Indice :</strong> la moyenne, c'est la somme de tous les éléments divisée par leur nombre. Additionne les éléments avec une boucle, puis divise par <code>len(L)</code>.
+      </div>
+      <div class="solution-box" id="solution-ex14">
+        <span class="solution-label">Solution</span>
+<pre>def moyenne(L):
+    somme = 0
+    for x in L:
+        somme = somme + x
+    return somme / len(L)</pre>
+      </div>
+    </div>
+
+    <!-- EXERCISE 15 -->
+    <div class="exercise-card in" data-theme="stats" data-level="debutant" data-reveal="" data-testid="exercise-card-ex15">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 15</span>
+        <span class="card-level debutant">Débutant</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-chart-column></use></svg> Statistiques</span>
+      </div>
+      <div class="exercise-title">Compter les apparitions</div>
+      <div class="exercise-desc">
+        Écris une fonction <code>compte(x, L)</code> qui retourne le nombre de fois que l'élément <code>x</code> apparaît dans la liste <code>L</code>. Teste avec <code>L = [3, 7, 3, 3, 2, 7, 3]</code> et <code>x = 3</code>.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex15')" data-testid="run-btn-ex15"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex15" onclick="validateExercise('ex15')" data-testid="validate-btn-ex15"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex15" spellcheck="false"># Écris ta solution ici
+def compte(x, L):
+    pass  # Remplace pass par ton code
+
+L = [3, 7, 3, 3, 2, 7, 3]
+print("Nombre d'apparitions de 3 :", compte(3, L))
+</textarea>
+        <div class="mini-output empty" id="out-ex15" data-testid="out-ex15">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex15" data-testid="report-ex15"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex15" onclick="toggleHint('ex15')" data-testid="hint-btn-ex15"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex15" onclick="toggleSolution('ex15')" data-testid="solution-btn-ex15"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex15">
+        <strong>Indice :</strong> initialise un compteur <code>nombre = 0</code>, puis parcours la liste. Chaque fois que l'élément est égal à <code>x</code>, ajoute 1 au compteur.
+      </div>
+      <div class="solution-box" id="solution-ex15">
+        <span class="solution-label">Solution</span>
+<pre>def compte(x, L):
+    nombre = 0
+    for element in L:
+        if element == x:
+            nombre = nombre + 1
+    return nombre</pre>
+      </div>
+    </div>
+
+    <!-- EXERCISE 16 : DIFFICILE -->
+    <div class="exercise-card in" data-theme="stats" data-level="difficile" data-reveal="" data-testid="exercise-card-ex16">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 16</span>
+        <span class="card-level difficile">Difficile</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-chart-column></use></svg> Statistiques</span>
+      </div>
+      <div class="exercise-title">Médiane d'une liste</div>
+      <div class="exercise-desc">
+        Écris <code>mediane(L)</code> : trie la liste, puis prends l'élément du milieu si la longueur est impaire, ou la moyenne des deux éléments du milieu si elle est paire. Teste avec <code>[7, 2, 9, 4, 5]</code> (médiane : <code>5</code>) et <code>[1, 3, 5, 7]</code> (médiane : <code>4.0</code>).
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex16')" data-testid="run-btn-ex16"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex16" onclick="validateExercise('ex16')" data-testid="validate-btn-ex16"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex16" spellcheck="false"># Médiane d'une liste
+def mediane(L):
+    L_triee = sorted(L)
+    n = len(L_triee)
+    pass  # À toi de jouer !
+
+print("Médiane :", mediane([7, 2, 9, 4, 5]))
+print("Médiane :", mediane([1, 3, 5, 7]))
+</textarea>
+        <div class="mini-output empty" id="out-ex16" data-testid="out-ex16">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex16" data-testid="report-ex16"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex16" onclick="toggleHint('ex16')" data-testid="hint-btn-ex16"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex16" onclick="toggleSolution('ex16')" data-testid="solution-btn-ex16"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex16">
+        <strong>Indice :</strong> si <code>n</code> est impair, l'indice du milieu est <code>n // 2</code>. Si <code>n</code> est pair, moyenne de <code>L_triee[n//2 - 1]</code> et <code>L_triee[n//2]</code>. Utilise <code>n % 2 == 0</code>.
+      </div>
+      <div class="solution-box" id="solution-ex16">
+        <span class="solution-label">Solution</span>
+<pre>def mediane(L):
+    L_triee = sorted(L)
+    n = len(L_triee)
+    if n % 2 == 0:
+        return (L_triee[n//2 - 1] + L_triee[n//2]) / 2
+    else:
+        return L_triee[n // 2]</pre>
+      </div>
+    </div>
+
+    <!-- THÈME : CORRECTION D'ERREUR -->
+
+    <!-- EXERCISE 17 -->
+    <div class="exercise-card in" data-theme="erreur" data-level="debutant" data-reveal="" data-testid="exercise-card-ex17">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 17</span>
+        <span class="card-level debutant">Débutant</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-bug></use></svg> Correction d'erreur</span>
+      </div>
+      <div class="exercise-title">Corrige : boucle infinie</div>
+      <div class="exercise-desc">
+        Ce code devrait afficher les nombres de 0 à 4, mais il <strong>plante en boucle infinie</strong>. Trouve et corrige l'erreur.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex17')" data-testid="run-btn-ex17"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex17" onclick="validateExercise('ex17')" data-testid="validate-btn-ex17"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex17" spellcheck="false"># Ce code ne s'arrête jamais : trouve le bug !
+compteur = 0
+while compteur &lt; 5:
+    print(compteur)
+    # Il manque quelque chose ici...
+</textarea>
+        <div class="mini-output empty" id="out-ex17" data-testid="out-ex17">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex17" data-testid="report-ex17"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex17" onclick="toggleHint('ex17')" data-testid="hint-btn-ex17"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex17" onclick="toggleSolution('ex17')" data-testid="solution-btn-ex17"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex17">
+        <strong>Indice :</strong> dans une boucle <code>while</code>, il faut faire évoluer la variable testée, sinon elle reste toujours vraie. Ici, <code>compteur</code> ne change jamais.
+      </div>
+      <div class="solution-box" id="solution-ex17">
+        <span class="solution-label">Solution</span>
+<pre>compteur = 0
+while compteur &lt; 5:
+    print(compteur)
+    compteur = compteur + 1  # ← la ligne qui manquait</pre>
+      </div>
+    </div>
+
+    <!-- EXERCISE 18 -->
+    <div class="exercise-card in" data-theme="erreur" data-level="debutant" data-reveal="" data-testid="exercise-card-ex18">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 18</span>
+        <span class="card-level debutant">Débutant</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-bug></use></svg> Correction d'erreur</span>
+      </div>
+      <div class="exercise-title">Corrige : confusion = et ==</div>
+      <div class="exercise-desc">
+        Ce code devrait afficher <code>"Majeur"</code> si l'âge est supérieur ou égal à 18, mais il provoque une erreur de syntaxe. Trouve et corrige le bug.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex18')" data-testid="run-btn-ex18"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex18" onclick="validateExercise('ex18')" data-testid="validate-btn-ex18"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex18" spellcheck="false"># Ce code contient une erreur de syntaxe : trouve le bug !
+age = 20
+
+if age = 18:
+    print("Majeur")
+else:
+    print("Mineur")
+</textarea>
+        <div class="mini-output empty" id="out-ex18" data-testid="out-ex18">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex18" data-testid="report-ex18"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex18" onclick="toggleHint('ex18')" data-testid="hint-btn-ex18"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex18" onclick="toggleSolution('ex18')" data-testid="solution-btn-ex18"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex18">
+        <strong>Indice :</strong> <code>=</code> sert à affecter une valeur, <code>==</code> sert à comparer. Dans un <code>if</code>, il faut <code>==</code>. Et l'énoncé demande "supérieur ou égal", pas "égal" !
+      </div>
+      <div class="solution-box" id="solution-ex18">
+        <span class="solution-label">Solution</span>
+<pre>age = 20
+
+if age &gt;= 18:
+    print("Majeur")
+else:
+    print("Mineur")</pre>
+      </div>
+    </div>
+
+    <!-- EXERCISE 19 -->
+    <div class="exercise-card in" data-theme="erreur" data-level="intermediaire" data-reveal="" data-testid="exercise-card-ex19">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 19</span>
+        <span class="card-level intermediaire">Intermédiaire</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-bug></use></svg> Correction d'erreur</span>
+      </div>
+      <div class="exercise-title">Corrige : IndexError</div>
+      <div class="exercise-desc">
+        Cette fonction devrait afficher tous les éléments d'une liste avec leur indice, mais elle provoque une <code>IndexError</code>. Trouve et corrige le bug.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex19')" data-testid="run-btn-ex19"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex19" onclick="validateExercise('ex19')" data-testid="validate-btn-ex19"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex19" spellcheck="false"># Ce code provoque une IndexError : trouve le bug !
+def affiche_avec_indice(L):
+    for i in range(len(L) + 1):
+        print(i, ":", L[i])
+
+L = [10, 20, 30]
+affiche_avec_indice(L)
+</textarea>
+        <div class="mini-output empty" id="out-ex19" data-testid="out-ex19">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex19" data-testid="report-ex19"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex19" onclick="toggleHint('ex19')" data-testid="hint-btn-ex19"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex19" onclick="toggleSolution('ex19')" data-testid="solution-btn-ex19"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex19">
+        <strong>Indice :</strong> une liste de 3 éléments a les indices 0, 1, 2 : <code>range(len(L))</code> suffit. Le <code>+ 1</code> fait sortir la boucle jusqu'à l'indice 3, qui n'existe pas.
+      </div>
+      <div class="solution-box" id="solution-ex19">
+        <span class="solution-label">Solution</span>
+<pre>def affiche_avec_indice(L):
+    for i in range(len(L)):
+        print(i, ":", L[i])
+
+L = [10, 20, 30]
+affiche_avec_indice(L)</pre>
+      </div>
+    </div>
+
+    <!-- EXERCISE 20 -->
+    <div class="exercise-card in" data-theme="erreur" data-level="intermediaire" data-reveal="" data-testid="exercise-card-ex20">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 20</span>
+        <span class="card-level intermediaire">Intermédiaire</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-bug></use></svg> Correction d'erreur</span>
+      </div>
+      <div class="exercise-title">Corrige : TypeError</div>
+      <div class="exercise-desc">
+        Ce code devrait afficher <code>"J'ai 17 ans"</code>, mais il provoque une <code>TypeError</code>. Trouve et corrige le bug.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex20')" data-testid="run-btn-ex20"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex20" onclick="validateExercise('ex20')" data-testid="validate-btn-ex20"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex20" spellcheck="false"># Ce code provoque une TypeError : trouve le bug !
+age = 17
+message = "J'ai " + age + " ans"
+print(message)
+</textarea>
+        <div class="mini-output empty" id="out-ex20" data-testid="out-ex20">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex20" data-testid="report-ex20"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex20" onclick="toggleHint('ex20')" data-testid="hint-btn-ex20"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex20" onclick="toggleSolution('ex20')" data-testid="solution-btn-ex20"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex20">
+        <strong>Indice :</strong> on ne peut pas additionner un texte et un nombre avec <code>+</code>. Convertis le nombre en texte avec <code>str(age)</code> avant de l'ajouter.
+      </div>
+      <div class="solution-box" id="solution-ex20">
+        <span class="solution-label">Solution</span>
+<pre>age = 17
+message = "J'ai " + str(age) + " ans"
+print(message)</pre>
+      </div>
+    </div>
+
+    <!-- EXERCISE 21 : DIFFICILE -->
+    <div class="exercise-card in" data-theme="erreur" data-level="difficile" data-reveal="" data-testid="exercise-card-ex21">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 21</span>
+        <span class="card-level difficile">Difficile</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-bug></use></svg> Correction d'erreur</span>
+      </div>
+      <div class="exercise-title">Corrige : bug silencieux (sans erreur !)</div>
+      <div class="exercise-desc">
+        Ce code <strong>ne plante pas</strong>, mais le résultat est faux ! La fonction devrait retourner le maximum (<code>-3</code>), mais retourne autre chose. Trouve et corrige l'erreur de logique.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex21')" data-testid="run-btn-ex21"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex21" onclick="validateExercise('ex21')" data-testid="validate-btn-ex21"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex21" spellcheck="false"># Ce code tourne sans erreur, mais le résultat est FAUX : trouve le bug !
+def mon_max(L):
+    maximum = 0
+    for i in range(len(L)):
+        if L[i] &gt; maximum:
+            maximum = L[i]
+    return maximum
+
+L = [-5, -12, -3, -8]
+print("Maximum :", mon_max(L))  # Devrait afficher -3, pas 0 !
+</textarea>
+        <div class="mini-output empty" id="out-ex21" data-testid="out-ex21">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex21" data-testid="report-ex21"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex21" onclick="toggleHint('ex21')" data-testid="hint-btn-ex21"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex21" onclick="toggleSolution('ex21')" data-testid="solution-btn-ex21"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex21">
+        <strong>Indice :</strong> le code initialise <code>maximum = 0</code>, mais si tous les éléments sont négatifs, aucun ne dépassera jamais 0 ! Initialise <code>maximum</code> avec <code>L[0]</code>, pas une valeur arbitraire.
+      </div>
+      <div class="solution-box" id="solution-ex21">
+        <span class="solution-label">Solution</span>
+<pre>def mon_max(L):
+    maximum = L[0]  # ← initialiser avec L[0], pas 0
+    for i in range(len(L)):
+        if L[i] &gt; maximum:
+            maximum = L[i]
+    return maximum</pre>
+      </div>
+    </div>
+
+    <!-- THÈME : DICTIONNAIRES -->
+
+    <!-- EXERCISE 22 -->
+    <div class="exercise-card in" data-theme="dico" data-level="debutant" data-reveal="" data-testid="exercise-card-ex22">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 22</span>
+        <span class="card-level debutant">Débutant</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-library></use></svg> Dictionnaires</span>
+      </div>
+      <div class="exercise-title">Gestion d'un élève</div>
+      <div class="exercise-desc">
+        Crée un dictionnaire <code>eleve</code> avec les clés : <code>nom</code>, <code>prenom</code>, <code>classe</code>, <code>note</code>. Modifie la note à 18, supprime la clé <code>classe</code>, puis affiche tout le dictionnaire.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex22')" data-testid="run-btn-ex22"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex22" onclick="validateExercise('ex22')" data-testid="validate-btn-ex22"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex22" spellcheck="false"># Dictionnaire
+eleve = {
+    # À compléter : nom, prenom, classe, note
+}
+
+# Modifie la note à 18
+
+
+# Supprime la clé "classe"
+
+
+print("Élève :", eleve)
+</textarea>
+        <div class="mini-output empty" id="out-ex22" data-testid="out-ex22">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex22" data-testid="report-ex22"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex22" onclick="toggleHint('ex22')" data-testid="hint-btn-ex22"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex22" onclick="toggleSolution('ex22')" data-testid="solution-btn-ex22"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex22">
+        <strong>Indice :</strong> pour modifier une valeur, <code>eleve["note"] = 18</code>. Pour supprimer une clé, <code>eleve.pop("classe")</code>.
+      </div>
+      <div class="solution-box" id="solution-ex22">
+        <span class="solution-label">Solution</span>
+<pre>eleve = {
+    "nom": "Dupont",
+    "prenom": "Marie",
+    "classe": "Terminale",
+    "note": 14
+}
+
+eleve["note"] = 18
+eleve.pop("classe")
+
+print("Élève :", eleve)</pre>
+      </div>
+    </div>
+
+    <!-- EXERCISE 23 -->
+    <div class="exercise-card in" data-theme="dico" data-level="intermediaire" data-reveal="" data-testid="exercise-card-ex23">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 23</span>
+        <span class="card-level intermediaire">Intermédiaire</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-library></use></svg> Dictionnaires</span>
+      </div>
+      <div class="exercise-title">Lettres dans un texte</div>
+      <div class="exercise-desc">
+        Écris <code>compte_lettres(mot)</code> qui retourne un dictionnaire où chaque clé est une lettre du mot, et la valeur le nombre de fois qu'elle apparaît. Teste avec <code>"anticonstitutionnellement"</code>.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex23')" data-testid="run-btn-ex23"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex23" onclick="validateExercise('ex23')" data-testid="validate-btn-ex23"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex23" spellcheck="false"># Compter les lettres dans un dictionnaire
+def compte_lettres(mot):
+    compteur = {}
+    pass  # À toi de jouer !
+
+print(compte_lettres("anticonstitutionnellement"))
+</textarea>
+        <div class="mini-output empty" id="out-ex23" data-testid="out-ex23">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex23" data-testid="report-ex23"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex23" onclick="toggleHint('ex23')" data-testid="hint-btn-ex23"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex23" onclick="toggleSolution('ex23')" data-testid="solution-btn-ex23"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex23">
+        <strong>Indice :</strong> parcours chaque lettre du mot. Utilise <code>compteur[lettre] = compteur.get(lettre, 0) + 1</code>, <code>.get(lettre, 0)</code> retourne 0 si la lettre n'est pas encore une clé.
+      </div>
+      <div class="solution-box" id="solution-ex23">
+        <span class="solution-label">Solution</span>
+<pre>def compte_lettres(mot):
+    compteur = {}
+    for lettre in mot:
+        compteur[lettre] = compteur.get(lettre, 0) + 1
+    return compteur</pre>
+      </div>
+    </div>
+
+    <!-- EXERCISE 24 : DIFFICILE -->
+    <div class="exercise-card in" data-theme="dico" data-level="difficile" data-reveal="" data-testid="exercise-card-ex24">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 24</span>
+        <span class="card-level difficile">Difficile</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-library></use></svg> Dictionnaires</span>
+      </div>
+      <div class="exercise-title">Mot le plus fréquent</div>
+      <div class="exercise-desc">
+        Écris <code>mot_frequent(texte)</code> qui retourne le mot le plus fréquent dans une liste de mots. Teste avec <code>["nsi", "python", "nsi", "code", "nsi", "python"]</code> (résultat : <code>"nsi"</code>).
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex24')" data-testid="run-btn-ex24"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex24" onclick="validateExercise('ex24')" data-testid="validate-btn-ex24"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex24" spellcheck="false"># Mot le plus fréquent
+def mot_frequent(texte):
+    compteur = {}
+    pass  # À toi de jouer !
+
+texte = ["nsi", "python", "nsi", "code", "nsi", "python"]
+print("Mot le plus fréquent :", mot_frequent(texte))
+</textarea>
+        <div class="mini-output empty" id="out-ex24" data-testid="out-ex24">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex24" data-testid="report-ex24"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex24" onclick="toggleHint('ex24')" data-testid="hint-btn-ex24"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex24" onclick="toggleSolution('ex24')" data-testid="solution-btn-ex24"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex24">
+        <strong>Indice :</strong> compte les occurrences comme avant. Trouve la clé avec la plus grande valeur grâce à <code>max(compteur, key=compteur.get)</code>.
+      </div>
+      <div class="solution-box" id="solution-ex24">
+        <span class="solution-label">Solution</span>
+<pre>def mot_frequent(texte):
+    compteur = {}
+    for mot in texte:
+        compteur[mot] = compteur.get(mot, 0) + 1
+    return max(compteur, key=compteur.get)</pre>
+      </div>
+    </div>
+
+    <!-- THÈME : TABLEAUX 2D -->
+
+    <!-- EXERCISE 25 -->
+    <div class="exercise-card in" data-theme="tableaux" data-level="intermediaire" data-reveal="" data-testid="exercise-card-ex25">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 25</span>
+        <span class="card-level intermediaire">Intermédiaire</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-grid-3x3></use></svg> Tableaux 2D</span>
+      </div>
+      <div class="exercise-title">Diagonale d'une matrice</div>
+      <div class="exercise-desc">
+        Crée un tableau 5×5 rempli de zéros par compréhension. Mets 1 sur la diagonale principale. Affiche le tableau ligne par ligne.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex25')" data-testid="run-btn-ex25"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex25" onclick="validateExercise('ex25')" data-testid="validate-btn-ex25"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex25" spellcheck="false"># Tableau 2D avec diagonale
+tableau = []  # À compléter : tableau 5x5 de zéros
+
+# Mets 1 sur la diagonale
+
+
+# Affiche
+</textarea>
+        <div class="mini-output empty" id="out-ex25" data-testid="out-ex25">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex25" data-testid="report-ex25"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex25" onclick="toggleHint('ex25')" data-testid="hint-btn-ex25"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex25" onclick="toggleSolution('ex25')" data-testid="solution-btn-ex25"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex25">
+        <strong>Indice :</strong> <code>[[0 for j in range(5)] for i in range(5)]</code>. La diagonale : <code>tableau[i][i] = 1</code>.
+      </div>
+      <div class="solution-box" id="solution-ex25">
+        <span class="solution-label">Solution</span>
+<pre>tableau = [[0 for j in range(5)] for i in range(5)]
+
+for i in range(5):
+    tableau[i][i] = 1
+
+for ligne in tableau:
+    print(ligne)</pre>
+      </div>
+    </div>
+
+    <!-- EXERCISE 26 -->
+    <div class="exercise-card in" data-theme="tableaux" data-level="intermediaire" data-reveal="" data-testid="exercise-card-ex26">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 26</span>
+        <span class="card-level intermediaire">Intermédiaire</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-grid-3x3></use></svg> Tableaux 2D</span>
+      </div>
+      <div class="exercise-title">Somme de chaque ligne</div>
+      <div class="exercise-desc">
+        Écris <code>sommes_lignes(M)</code> qui retourne une liste contenant la somme de chaque ligne de <code>M</code>. Teste avec <code>M = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]</code> (résultat : <code>[6, 15, 24]</code>).
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex26')" data-testid="run-btn-ex26"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex26" onclick="validateExercise('ex26')" data-testid="validate-btn-ex26"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex26" spellcheck="false"># Somme de chaque ligne
+def sommes_lignes(M):
+    resultat = []
+    pass  # À toi de jouer !
+
+M = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+print("Sommes :", sommes_lignes(M))
+</textarea>
+        <div class="mini-output empty" id="out-ex26" data-testid="out-ex26">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex26" data-testid="report-ex26"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex26" onclick="toggleHint('ex26')" data-testid="hint-btn-ex26"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex26" onclick="toggleSolution('ex26')" data-testid="solution-btn-ex26"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex26">
+        <strong>Indice :</strong> parcours chaque <code>ligne</code> de <code>M</code>, calcule sa somme avec <code>sum(ligne)</code>, et ajoute-la à <code>resultat</code> avec <code>.append()</code>.
+      </div>
+      <div class="solution-box" id="solution-ex26">
+        <span class="solution-label">Solution</span>
+<pre>def sommes_lignes(M):
+    resultat = []
+    for ligne in M:
+        resultat.append(sum(ligne))
+    return resultat</pre>
+      </div>
+    </div>
+
+    <!-- EXERCISE 27 : DIFFICILE -->
+    <div class="exercise-card in" data-theme="tableaux" data-level="difficile" data-reveal="" data-testid="exercise-card-ex27">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 27</span>
+        <span class="card-level difficile">Difficile</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-grid-3x3></use></svg> Tableaux 2D</span>
+      </div>
+      <div class="exercise-title">Transposée d'une matrice</div>
+      <div class="exercise-desc">
+        Écris <code>transposee(M)</code> qui retourne la transposée d'une matrice : les lignes deviennent des colonnes. Teste avec <code>M = [[1, 2, 3], [4, 5, 6]]</code> (résultat : matrice 3×2).
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex27')" data-testid="run-btn-ex27"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex27" onclick="validateExercise('ex27')" data-testid="validate-btn-ex27"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex27" spellcheck="false"># Transposée d'une matrice
+def transposee(M):
+    pass  # À toi de jouer !
+
+M = [[1, 2, 3], [4, 5, 6]]
+for ligne in transposee(M):
+    print(ligne)
+</textarea>
+        <div class="mini-output empty" id="out-ex27" data-testid="out-ex27">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex27" data-testid="report-ex27"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex27" onclick="toggleHint('ex27')" data-testid="hint-btn-ex27"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex27" onclick="toggleSolution('ex27')" data-testid="solution-btn-ex27"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex27">
+        <strong>Indice :</strong> si <code>M</code> a <code>n</code> lignes et <code>p</code> colonnes, <code>transposee[j][i] = M[i][j]</code>. Double compréhension : <code>[[M[i][j] for i in range(n)] for j in range(p)]</code>.
+      </div>
+      <div class="solution-box" id="solution-ex27">
+        <span class="solution-label">Solution</span>
+<pre>def transposee(M):
+    n = len(M)
+    p = len(M[0])
+    return [[M[i][j] for i in range(n)] for j in range(p)]</pre>
+      </div>
+    </div>
+
+    <!-- THÈME : PROBLÈMES (SYNTHÈSE) -->
+
+    <!-- EXERCISE 28 : DIFFICILE -->
+    <div class="exercise-card in" data-theme="problemes" data-level="difficile" data-reveal="" data-testid="exercise-card-ex28">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 28</span>
+        <span class="card-level difficile">Difficile</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-puzzle></use></svg> Problèmes</span>
+      </div>
+      <div class="exercise-title">Factorielle récursive</div>
+      <div class="exercise-desc">
+        Écris une fonction <strong>récursive</strong> <code>factorielle(n)</code> qui calcule <code>n!</code>, avec <code>factorielle(0) = 1</code>. Teste avec <code>n = 6</code>.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex28')" data-testid="run-btn-ex28"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex28" onclick="validateExercise('ex28')" data-testid="validate-btn-ex28"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex28" spellcheck="false"># Factorielle récursive
+def factorielle(n):
+    pass  # À toi de jouer ! Pense au cas de base.
+
+print("6! =", factorielle(6))
+</textarea>
+        <div class="mini-output empty" id="out-ex28" data-testid="out-ex28">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex28" data-testid="report-ex28"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex28" onclick="toggleHint('ex28')" data-testid="hint-btn-ex28"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex28" onclick="toggleSolution('ex28')" data-testid="solution-btn-ex28"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex28">
+        <strong>Indice :</strong> cas de base : si <code>n == 0</code>, retourne <code>1</code>. Cas récursif : retourne <code>n * factorielle(n - 1)</code>.
+      </div>
+      <div class="solution-box" id="solution-ex28">
+        <span class="solution-label">Solution</span>
+<pre>def factorielle(n):
+    if n == 0:
+        return 1
+    return n * factorielle(n - 1)</pre>
+      </div>
+    </div>
+
+    <!-- EXERCISE 29 : DIFFICILE -->
+    <div class="exercise-card in" data-theme="problemes" data-level="difficile" data-reveal="" data-testid="exercise-card-ex29">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 29</span>
+        <span class="card-level difficile">Difficile</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-puzzle></use></svg> Problèmes</span>
+      </div>
+      <div class="exercise-title">Nombres premiers (crible)</div>
+      <div class="exercise-desc">
+        Écris <code>premiers(n)</code> qui retourne la liste des nombres premiers entre 2 et <code>n</code> (inclus). Teste avec <code>n = 50</code>.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex29')" data-testid="run-btn-ex29"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex29" onclick="validateExercise('ex29')" data-testid="validate-btn-ex29"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex29" spellcheck="false"># Nombres premiers
+def est_premier(x):
+    if x &lt; 2:
+        return False
+    pass  # À toi de jouer !
+
+def premiers(n):
+    resultat = []
+    pass  # Utilise est_premier(x) pour chaque x de 2 à n
+
+print("Premiers jusqu'à 50 :", premiers(50))
+</textarea>
+        <div class="mini-output empty" id="out-ex29" data-testid="out-ex29">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex29" data-testid="report-ex29"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex29" onclick="toggleHint('ex29')" data-testid="hint-btn-ex29"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex29" onclick="toggleSolution('ex29')" data-testid="solution-btn-ex29"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex29">
+        <strong>Indice :</strong> pour <code>est_premier(x)</code>, teste les diviseurs entre 2 et <code>int(x**0.5) + 1</code>. Pour <code>premiers(n)</code>, parcours chaque nombre de 2 à <code>n</code> et garde ceux premiers.
+      </div>
+      <div class="solution-box" id="solution-ex29">
+        <span class="solution-label">Solution</span>
+<pre>def est_premier(x):
+    if x &lt; 2:
+        return False
+    for d in range(2, int(x**0.5) + 1):
+        if x % d == 0:
+            return False
+    return True
+
+def premiers(n):
+    resultat = []
+    for x in range(2, n + 1):
+        if est_premier(x):
+            resultat.append(x)
+    return resultat</pre>
+      </div>
+    </div>
+
+    <!-- EXERCISE 30 : DIFFICILE -->
+    <div class="exercise-card in" data-theme="problemes" data-level="difficile" data-reveal="" data-testid="exercise-card-ex30">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 30</span>
+        <span class="card-level difficile">Difficile</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-puzzle></use></svg> Problèmes</span>
+      </div>
+      <div class="exercise-title">Palindrome</div>
+      <div class="exercise-desc">
+        Écris <code>est_palindrome(mot)</code> qui retourne <code>True</code> si le mot se lit pareil à l'endroit et à l'envers, <strong>sans utiliser</strong> le slicing <code>[::-1]</code>. Teste avec <code>"radar"</code>, <code>"python"</code>, <code>"kayak"</code>.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex30')" data-testid="run-btn-ex30"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex30" onclick="validateExercise('ex30')" data-testid="validate-btn-ex30"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex30" spellcheck="false"># Palindrome
+def est_palindrome(mot):
+    pass  # À toi de jouer !
+
+print(est_palindrome("radar"))   # True
+print(est_palindrome("python"))  # False
+print(est_palindrome("kayak"))   # True
+</textarea>
+        <div class="mini-output empty" id="out-ex30" data-testid="out-ex30">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex30" data-testid="report-ex30"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex30" onclick="toggleHint('ex30')" data-testid="hint-btn-ex30"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex30" onclick="toggleSolution('ex30')" data-testid="solution-btn-ex30"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex30">
+        <strong>Indice :</strong> compare la lettre à la position <code>i</code> avec celle à la position <code>len(mot) - 1 - i</code>. Si une seule paire diffère, ce n'est pas un palindrome.
+      </div>
+      <div class="solution-box" id="solution-ex30">
+        <span class="solution-label">Solution</span>
+<pre>def est_palindrome(mot):
+    n = len(mot)
+    for i in range(n // 2):
+        if mot[i] != mot[n - 1 - i]:
+            return False
+    return True</pre>
+      </div>
+    </div>
+
+    <!-- EXERCISE 31 -->
+    <div class="exercise-card" data-theme="bases" data-level="debutant" data-reveal="" data-testid="exercise-card-ex31">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 31</span>
+        <span class="card-level debutant">Débutant</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-sprout></use></svg> Bases</span>
+      </div>
+      <div class="exercise-title">Premiers pas avec print()</div>
+      <div class="exercise-desc">
+        Affiche le texte <code>"Bonjour NSI"</code> avec <code>print()</code>. Puis crée une variable <code>age</code> qui vaut <code>17</code>, et affiche <code>"J'ai"</code>, la variable <code>age</code>, et <code>"ans"</code> sur une seule ligne avec un seul <code>print()</code> (sépare les éléments par des virgules).
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex31')" data-testid="run-btn-ex31"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex31" onclick="validateExercise('ex31')" data-testid="validate-btn-ex31"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex31" spellcheck="false"># Premiers pas avec print()
+# 1. Affiche "Bonjour NSI"
+
+
+# 2. Crée une variable age qui vaut 17
+
+
+# 3. Affiche "J'ai", age, et "ans" avec un seul print()
+
+</textarea>
+        <div class="mini-output empty" id="out-ex31" data-testid="out-ex31">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex31" data-testid="report-ex31"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex31" onclick="toggleHint('ex31')" data-testid="hint-btn-ex31"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex31" onclick="toggleSolution('ex31')" data-testid="solution-btn-ex31"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex31">
+        <strong>Indice :</strong> un texte s'écrit entre guillemets <code>"..."</code>. Pour afficher plusieurs choses avec un seul <code>print()</code>, sépare-les par des virgules : <code>print("texte", variable, "autre texte")</code>. Python ajoute automatiquement des espaces entre chaque élément.
+      </div>
+      <div class="solution-box" id="solution-ex31">
+        <span class="solution-label">Solution</span>
+<pre>print("Bonjour NSI")
+
+age = 17
+
+print("J'ai", age, "ans")</pre>
+      </div>
+    </div>
+
+    <!-- EXERCISE 32 -->
+    <div class="exercise-card" data-theme="bases" data-level="debutant" data-reveal="" data-testid="exercise-card-ex32">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 32</span>
+        <span class="card-level debutant">Débutant</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-sprout></use></svg> Bases</span>
+      </div>
+      <div class="exercise-title">Variables et types</div>
+      <div class="exercise-desc">
+        Crée 3 variables : <code>nom</code> (ton prénom, un texte), <code>age</code> (un nombre entier), <code>taille</code> (un nombre décimal, par exemple <code>1.70</code>). Affiche le <strong>type</strong> de chacune avec <code>type()</code>, dans cet ordre : nom, age, taille.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex32')" data-testid="run-btn-ex32"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex32" onclick="validateExercise('ex32')" data-testid="validate-btn-ex32"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex32" spellcheck="false"># Variables et types
+nom = ""       # Remplace par ton prénom entre guillemets
+age = 0        # Remplace par un nombre entier
+taille = 0.0   # Remplace par un nombre décimal
+
+print(type(nom))
+print(type(age))
+print(type(taille))
+</textarea>
+        <div class="mini-output empty" id="out-ex32" data-testid="out-ex32">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex32" data-testid="report-ex32"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex32" onclick="toggleHint('ex32')" data-testid="hint-btn-ex32"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex32" onclick="toggleSolution('ex32')" data-testid="solution-btn-ex32"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex32">
+        <strong>Indice :</strong> un texte est toujours entre guillemets (<code>"Alice"</code>), un entier n'a pas de point (<code>17</code>), un décimal a un point, pas une virgule (<code>1.70</code>, pas <code>1,70</code>). <code>type()</code> te dira respectivement <code>str</code>, <code>int</code>, <code>float</code>.
+      </div>
+      <div class="solution-box" id="solution-ex32">
+        <span class="solution-label">Solution</span>
+<pre>nom = "Alice"
+age = 17
+taille = 1.70
+
+print(type(nom))
+print(type(age))
+print(type(taille))</pre>
+      </div>
+    </div>
+
+    <!-- EXERCISE 33 -->
+    <div class="exercise-card in" data-theme="bases" data-level="debutant" data-reveal="" data-testid="exercise-card-ex33">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 33</span>
+        <span class="card-level debutant">Débutant</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-sprout></use></svg> Bases</span>
+      </div>
+      <div class="exercise-title">Corrige : guillemets manquants</div>
+      <div class="exercise-desc">
+        Ce code devrait afficher <code>Bonjour, bienvenue en NSI !</code>, mais il provoque une erreur de syntaxe. Trouve et corrige le bug.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex33')" data-testid="run-btn-ex33"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex33" onclick="validateExercise('ex33')" data-testid="validate-btn-ex33"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex33" spellcheck="false"># Ce code contient une erreur de syntaxe : trouve le bug !
+print(Bonjour, bienvenue en NSI !)
+</textarea>
+        <div class="mini-output empty" id="out-ex33" data-testid="out-ex33">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex33" data-testid="report-ex33"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex33" onclick="toggleHint('ex33')" data-testid="hint-btn-ex33"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex33" onclick="toggleSolution('ex33')" data-testid="solution-btn-ex33"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex33">
+        <strong>Indice :</strong> sans guillemets, Python essaie de comprendre <code>Bonjour</code>, <code>bienvenue</code>, <code>en</code>, <code>NSI</code> comme des noms de variables, qui n'existent pas ! Tout texte à afficher tel quel doit être entouré de guillemets <code>"..."</code>.
+      </div>
+      <div class="solution-box" id="solution-ex33">
+        <span class="solution-label">Solution</span>
+<pre>print("Bonjour, bienvenue en NSI !")</pre>
+      </div>
+    </div>
+
+    <!-- EXERCISE 34 -->
+    <div class="exercise-card in" data-theme="bases" data-level="debutant" data-reveal="" data-testid="exercise-card-ex34">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 34</span>
+        <span class="card-level debutant">Débutant</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-sprout></use></svg> Bases</span>
+      </div>
+      <div class="exercise-title">Corrige : indentation manquante</div>
+      <div class="exercise-desc">
+        Ce code devrait afficher <code>"Accès autorisé"</code> quand <code>age</code> vaut 20, mais il provoque une <code>IndentationError</code>. Trouve et corrige le bug.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex34')" data-testid="run-btn-ex34"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex34" onclick="validateExercise('ex34')" data-testid="validate-btn-ex34"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex34" spellcheck="false"># Ce code provoque une IndentationError : trouve le bug !
+age = 20
+
+if age &gt;= 18:
+print("Accès autorisé")
+</textarea>
+        <div class="mini-output empty" id="out-ex34" data-testid="out-ex34">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex34" data-testid="report-ex34"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex34" onclick="toggleHint('ex34')" data-testid="hint-btn-ex34"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex34" onclick="toggleSolution('ex34')" data-testid="solution-btn-ex34"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex34">
+        <strong>Indice :</strong> en Python, tout ce qui appartient à un bloc <code>if</code> (ou <code>for</code>, <code>while</code>, <code>def</code>...) doit être <strong>indenté</strong> (décalé de 4 espaces) par rapport au mot-clé. Sans indentation, Python ne sait pas que cette ligne fait partie du bloc.
+      </div>
+      <div class="solution-box" id="solution-ex34">
+        <span class="solution-label">Solution</span>
+<pre>age = 20
+
+if age &gt;= 18:
+    print("Accès autorisé")</pre>
+      </div>
+    </div>
+
+    <!-- EXERCISE 35 -->
+    <div class="exercise-card in" data-theme="bases" data-level="debutant" data-reveal="" data-testid="exercise-card-ex35">
+      <div class="exercise-header">
+        <span class="exercise-num">Exercice 35</span>
+        <span class="card-level debutant">Débutant</span>
+        <span class="exercise-theme-tag"><svg class=ico aria-hidden=true><use href=#i-sprout></use></svg> Bases</span>
+      </div>
+      <div class="exercise-title">Corrige : variable non définie</div>
+      <div class="exercise-desc">
+        Ce code devrait afficher <code>"Score : 10"</code>, mais il provoque une <code>NameError</code>. Trouve et corrige le bug.
+      </div>
+      <div class="mini-console">
+        <div class="mini-console-header">
+          <span class="mini-console-title">Console Python 3</span>
+          <div class="mini-console-actions">
+            <button class="run-btn" onclick="runExercise('ex35')" data-testid="run-btn-ex35"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            <button class="validate-btn" id="validate-btn-ex35" onclick="validateExercise('ex35')" data-testid="validate-btn-ex35"><svg class=ico aria-hidden=true><use href=#i-flask-conical></use></svg> Valider l'exercice</button>
+          </div>
+        </div>
+        <textarea class="mini-editor" id="ex35" spellcheck="false"># Ce code provoque une NameError : trouve le bug !
+print("Score :", score)
+score = 10
+</textarea>
+        <div class="mini-output empty" id="out-ex35" data-testid="out-ex35">Appuie sur Exécuter</div>
+      </div>
+      <div class="test-report" id="report-ex35" data-testid="report-ex35"></div>
+      <div class="exercise-tools">
+        <button class="tool-toggle-btn hint-btn" id="hint-btn-ex35" onclick="toggleHint('ex35')" data-testid="hint-btn-ex35"><svg class=ico aria-hidden=true><use href=#i-lightbulb></use></svg> Indice</button>
+        <button class="tool-toggle-btn solution-btn" id="solution-btn-ex35" onclick="toggleSolution('ex35')" data-testid="solution-btn-ex35"><svg class=ico aria-hidden=true><use href=#i-lock-open></use></svg> Solution</button>
+      </div>
+      <div class="hint-box" id="hint-ex35">
+        <strong>Indice :</strong> Python exécute le code <strong>ligne par ligne, de haut en bas</strong>. Ici, on essaie d'afficher <code>score</code> avant même de l'avoir créée ! Il faut toujours créer (affecter) une variable <strong>avant</strong> de l'utiliser.
+      </div>
+      <div class="solution-box" id="solution-ex35">
+        <span class="solution-label">Solution</span>
+<pre>score = 10
+print("Score :", score)</pre>
+      </div>
+    </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHEAT SHEET (carrousel) -->
+  <section class="cc-section section" id="section-cheatsheet" data-testid="section-cheatsheet">
+    <div class="cc-pin">
+      <div class="cc-bg" aria-hidden="true">
+        <div class="cc-bg-layer" data-par="0.009"><div class="cc-bg-drift cc-bg-fond"></div></div>
+        <div class="cc-bg-layer" data-par="0.02"><div class="cc-bg-drift cc-bg-glyphes"></div></div>
+        <div class="cc-bg-layer" data-par="0.035"><div class="cc-bg-drift cc-bg-code"></div></div>
+      </div>
+      <div class="wrap cc-head">
+        <div>
+          <h2 class="block-title">Cheat Sheet</h2>
+        </div>
+        <div class="cc-counter" aria-live="polite"><b id="cheat-idx" data-testid="cheat-carousel-index">01</b>/ <span id="cheat-total">18</span> <button class="cc-skip" data-nav="console" data-testid="cheat-skip-btn">Passer <svg class=ico aria-hidden=true><use href=#i-arrow-down></use></svg></button></div>
+      </div>
+      <div class="cc-stage" id="cheat-stage" tabindex="0" role="region" aria-roledescription="carrousel" aria-label="Fiches de référence : flèches gauche et droite pour naviguer" data-cursor-label="Glisser" data-testid="cheat-carousel" style="--cw: 275.95588235294116px; --ch: 375.3px;">
+        <div class="cc-item is-center" data-testid="cheat-card-1" data-level-tone="intermediaire" style="visibility: visible; transform: translate3d(0px, 0px, 0px) rotateY(0deg) scale(1); filter: none; opacity: 1; z-index: 100; --vel: 0.000;"><div class="cc-smear" style="opacity: 0;"></div><div class="cc-card cheat-card"><div class="cheat-index">Fiche 01</div>
+        <div class="cheat-title">Listes : Création</div>
+        <div class="cheat-row"><span class="cheat-code">L = []</span><span class="cheat-desc">Liste vide</span></div>
+        <div class="cheat-row"><span class="cheat-code">L = [1,2,3]</span><span class="cheat-desc">Liste avec valeurs</span></div>
+        <div class="cheat-row"><span class="cheat-code">len(L)</span><span class="cheat-desc">Longueur de la liste</span></div>
+        <div class="cheat-row"><span class="cheat-code">L[0]</span><span class="cheat-desc">Premier élément</span></div>
+        <div class="cheat-row"><span class="cheat-code">L[-1]</span><span class="cheat-desc">Dernier élément</span></div>
+        <div class="cheat-row"><span class="cheat-code">L.append(x)</span><span class="cheat-desc">Ajouter x en fin</span></div>
+        <div class="cheat-row"><span class="cheat-code">L.pop()</span><span class="cheat-desc">Supprimer le dernier</span></div>
+      </div></div>
+        <div class="cc-item" data-testid="cheat-card-2" data-level-tone="difficile" style="visibility: visible; transform: translate3d(309.1px, 0px, -170px) rotateY(-34deg) scale(0.95); filter: none; opacity: 1; z-index: 90; --vel: 0.000;"><div class="cc-smear" style="opacity: 0.22;"></div><div class="cc-card cheat-card"><div class="cheat-index">Fiche 02</div>
+        <div class="cheat-title">Boucles</div>
+        <div class="cheat-row"><span class="cheat-code">for i in range(n)</span><span class="cheat-desc">Boucle de 0 à n-1</span></div>
+        <div class="cheat-row"><span class="cheat-code">for x in L</span><span class="cheat-desc">Parcourir une liste</span></div>
+        <div class="cheat-row"><span class="cheat-code">while cond</span><span class="cheat-desc">Boucle tant que</span></div>
+        <div class="cheat-row"><span class="cheat-code">break</span><span class="cheat-desc">Sortir de la boucle</span></div>
+        <div class="cheat-row"><span class="cheat-code">continue</span><span class="cheat-desc">Passer à l'itération suivante</span></div>
+      </div></div>
+        <div class="cc-item" data-testid="cheat-card-3" data-level-tone="debutant" style="visibility: visible; transform: translate3d(500.7px, 0px, -340px) rotateY(-62deg) scale(0.9); filter: none; opacity: 1; z-index: 80; --vel: 0.000;"><div class="cc-smear" style="opacity: 0.22;"></div><div class="cc-card cheat-card"><div class="cheat-index">Fiche 03</div>
+        <div class="cheat-title">Fonctions</div>
+        <div class="cheat-row"><span class="cheat-code">def f(x):</span><span class="cheat-desc">Définir une fonction</span></div>
+        <div class="cheat-row"><span class="cheat-code">return val</span><span class="cheat-desc">Retourner une valeur</span></div>
+        <div class="cheat-row"><span class="cheat-code">f(5)</span><span class="cheat-desc">Appeler f avec 5</span></div>
+        <div class="cheat-row"><span class="cheat-code">f(a, b)</span><span class="cheat-desc">Plusieurs paramètres</span></div>
+      </div></div>
+        <div class="cc-item" data-testid="cheat-card-4" data-level-tone="intermediaire" style="visibility: visible; transform: translate3d(692.3px, 0px, -510px) rotateY(-62deg) scale(0.9); filter: none; opacity: 0.6; z-index: 70; --vel: 0.000;"><div class="cc-smear" style="opacity: 0.22;"></div><div class="cc-card cheat-card"><div class="cheat-index">Fiche 04</div>
+        <div class="cheat-title">Compréhension</div>
+        <div class="cheat-row"><span class="cheat-code">[x for x in L]</span><span class="cheat-desc">Copie de L</span></div>
+        <div class="cheat-row"><span class="cheat-code">[x*2 for x in L]</span><span class="cheat-desc">Doubles de L</span></div>
+        <div class="cheat-row"><span class="cheat-code">[x for x in L if x&gt;0]</span><span class="cheat-desc">Que les positifs</span></div>
+        <div class="cheat-row"><span class="cheat-code">[0 for _ in range(n)]</span><span class="cheat-desc">n zéros</span></div>
+      </div></div>
+        <div class="cc-item" data-testid="cheat-card-5" data-level-tone="difficile" style="visibility: hidden;"><div class="cc-smear"></div><div class="cc-card cheat-card"><div class="cheat-index">Fiche 05</div>
+        <div class="cheat-title">Dictionnaires</div>
+        <div class="cheat-row"><span class="cheat-code">d = {}</span><span class="cheat-desc">Dictionnaire vide</span></div>
+        <div class="cheat-row"><span class="cheat-code">d["cle"] = v</span><span class="cheat-desc">Ajouter / modifier</span></div>
+        <div class="cheat-row"><span class="cheat-code">d["cle"]</span><span class="cheat-desc">Lire une valeur</span></div>
+        <div class="cheat-row"><span class="cheat-code">d.pop("cle")</span><span class="cheat-desc">Supprimer une clé</span></div>
+        <div class="cheat-row"><span class="cheat-code">d.keys()</span><span class="cheat-desc">Toutes les clés</span></div>
+        <div class="cheat-row"><span class="cheat-code">d.values()</span><span class="cheat-desc">Toutes les valeurs</span></div>
+      </div></div>
+        <div class="cc-item" data-testid="cheat-card-6" data-level-tone="debutant" style="visibility: hidden;"><div class="cc-smear"></div><div class="cc-card cheat-card"><div class="cheat-index">Fiche 06</div>
+        <div class="cheat-title">Algorithmes : Complexité</div>
+        <div class="cheat-row"><span class="cheat-code">Recherche séq.</span><span class="cheat-desc">O(n) : parcours complet</span></div>
+        <div class="cheat-row"><span class="cheat-code">Recherche dicho.</span><span class="cheat-desc">O(log n) : divise par 2</span></div>
+        <div class="cheat-row"><span class="cheat-code">Tri sélection</span><span class="cheat-desc">O(n²) : double boucle</span></div>
+        <div class="cheat-row"><span class="cheat-code">Tri insertion</span><span class="cheat-desc">O(n²) : mais rapide si presque trié</span></div>
+      </div></div>
+        <div class="cc-item" data-testid="cheat-card-7" data-level-tone="intermediaire" style="visibility: hidden;"><div class="cc-smear"></div><div class="cc-card cheat-card"><div class="cheat-index">Fiche 07</div>
+        <div class="cheat-title">Modules utiles</div>
+        <div class="cheat-row"><span class="cheat-code">import random</span><span class="cheat-desc">Aléatoire</span></div>
+        <div class="cheat-row"><span class="cheat-code">random.randint(a,b)</span><span class="cheat-desc">Entier entre a et b</span></div>
+        <div class="cheat-row"><span class="cheat-code">import math</span><span class="cheat-desc">Maths avancées</span></div>
+        <div class="cheat-row"><span class="cheat-code">math.sqrt(x)</span><span class="cheat-desc">Racine carrée</span></div>
+        <div class="cheat-row"><span class="cheat-code">math.pi</span><span class="cheat-desc">Valeur de π</span></div>
+        <div class="cheat-row"><span class="cheat-code">import datetime</span><span class="cheat-desc">Dates et heures</span></div>
+      </div></div>
+        <div class="cc-item" data-testid="cheat-card-8" data-level-tone="difficile" style="visibility: hidden;"><div class="cc-smear"></div><div class="cc-card cheat-card"><div class="cheat-index">Fiche 08</div>
+        <div class="cheat-title">Tableaux 2D</div>
+        <div class="cheat-row"><span class="cheat-code">T[i][j]</span><span class="cheat-desc">Ligne i, colonne j</span></div>
+        <div class="cheat-row"><span class="cheat-code">[[0]*n]*m</span><span class="cheat-desc"><svg class=ico aria-hidden=true><use href=#i-triangle-alert></use></svg> Attention aux copies !</span></div>
+        <div class="cheat-row"><span class="cheat-code" style="white-space: normal; word-break: break-word;">[[0 for j in range(n)] for i in range(m)]</span></div>
+      </div></div>
+        <div class="cc-item" data-testid="cheat-card-9" data-level-tone="debutant" style="visibility: hidden;"><div class="cc-smear"></div><div class="cc-card cheat-card"><div class="cheat-index">Fiche 09</div>
+        <div class="cheat-title">Classes &amp; Objets</div>
+        <div class="cheat-row"><span class="cheat-code">class Nom:</span><span class="cheat-desc">Définir une classe</span></div>
+        <div class="cheat-row"><span class="cheat-code">def __init__(self, ...):</span><span class="cheat-desc">Constructeur</span></div>
+        <div class="cheat-row"><span class="cheat-code">self.attribut = v</span><span class="cheat-desc">Définir un attribut</span></div>
+        <div class="cheat-row"><span class="cheat-code">objet = Nom(...)</span><span class="cheat-desc">Créer une instance</span></div>
+        <div class="cheat-row"><span class="cheat-code">objet.methode()</span><span class="cheat-desc">Appeler une méthode</span></div>
+        <div class="cheat-row"><span class="cheat-code">def __str__(self):</span><span class="cheat-desc">Affichage personnalisé</span></div>
+      </div></div>
+        <div class="cc-item" data-testid="cheat-card-10" data-level-tone="intermediaire" style="visibility: hidden;"><div class="cc-smear"></div><div class="cc-card cheat-card"><div class="cheat-index">Fiche 10</div>
+        <div class="cheat-title">Piles &amp; Files</div>
+        <div class="cheat-row"><span class="cheat-code">pile.append(x)</span><span class="cheat-desc">Empiler</span></div>
+        <div class="cheat-row"><span class="cheat-code">pile.pop()</span><span class="cheat-desc">Dépiler (retire le dernier)</span></div>
+        <div class="cheat-row"><span class="cheat-code">from collections import deque</span><span class="cheat-desc">Import nécessaire pour une file</span></div>
+        <div class="cheat-row"><span class="cheat-code">file.append(x)</span><span class="cheat-desc">Enfiler</span></div>
+        <div class="cheat-row"><span class="cheat-code">file.popleft()</span><span class="cheat-desc">Défiler (retire le premier)</span></div>
+        <div class="cheat-row"><span class="cheat-code">len(p) == 0</span><span class="cheat-desc">Tester si vide</span></div>
+      </div></div>
+        <div class="cc-item" data-testid="cheat-card-11" data-level-tone="difficile" style="visibility: hidden;"><div class="cc-smear"></div><div class="cc-card cheat-card"><div class="cheat-index">Fiche 11</div>
+        <div class="cheat-title">Interfaces &amp; Implémentation</div>
+        <div class="cheat-row"><span class="cheat-code">Interface</span><span class="cheat-desc">Ce qu'on peut faire (le contrat)</span></div>
+        <div class="cheat-row"><span class="cheat-code">Implémentation</span><span class="cheat-desc">Comment c'est codé derrière</span></div>
+        <div class="cheat-row"><span class="cheat-code">Type abstrait (ADT)</span><span class="cheat-desc">Défini par son interface seule</span></div>
+      </div></div>
+        <div class="cc-item" data-testid="cheat-card-12" data-level-tone="debutant" style="visibility: hidden;"><div class="cc-smear"></div><div class="cc-card cheat-card"><div class="cheat-index">Fiche 12</div>
+        <div class="cheat-title">Récursivité</div>
+        <div class="cheat-row"><span class="cheat-code">if cas_de_base: return ...</span><span class="cheat-desc">Condition d'arrêt</span></div>
+        <div class="cheat-row"><span class="cheat-code">return f(n - 1)</span><span class="cheat-desc">Appel récursif</span></div>
+        <div class="cheat-row"><span class="cheat-code">RecursionError</span><span class="cheat-desc">Levée si le cas de base n'est jamais atteint</span></div>
+        <div class="cheat-row"><span class="cheat-code">Pile d'appels</span><span class="cheat-desc">Empile les appels en attente</span></div>
+      </div></div>
+        <div class="cc-item" data-testid="cheat-card-13" data-level-tone="intermediaire" style="visibility: hidden;"><div class="cc-smear"></div><div class="cc-card cheat-card"><div class="cheat-index">Fiche 13</div>
+        <div class="cheat-title">Arbres Binaires</div>
+        <div class="cheat-row"><span class="cheat-code">noeud.gauche / noeud.droite</span><span class="cheat-desc">Sous-arbres</span></div>
+        <div class="cheat-row"><span class="cheat-code">gauche &lt; noeud &lt; droite</span><span class="cheat-desc">Propriété d'un ABR</span></div>
+        <div class="cheat-row"><span class="cheat-code">Parcours infixe</span><span class="cheat-desc">Trie les valeurs d'un ABR</span></div>
+        <div class="cheat-row"><span class="cheat-code">O(log n)</span><span class="cheat-desc">Recherche dans un ABR équilibré</span></div>
+        <div class="cheat-row"><span class="cheat-code">O(n)</span><span class="cheat-desc">Pire cas : arbre dégénéré</span></div>
+      </div></div>
+        <div class="cc-item" data-testid="cheat-card-14" data-level-tone="difficile" style="visibility: hidden;"><div class="cc-smear"></div><div class="cc-card cheat-card"><div class="cheat-index">Fiche 14</div>
+        <div class="cheat-title">Modularité</div>
+        <div class="cheat-row"><span class="cheat-code">import mon_module</span><span class="cheat-desc">Importer son propre fichier .py</span></div>
+        <div class="cheat-row"><span class="cheat-code">mon_module.fonction()</span><span class="cheat-desc">Utiliser une fonction du module</span></div>
+        <div class="cheat-row"><span class="cheat-code">if __name__ == "__main__":</span><span class="cheat-desc">Code exécuté seulement si lancé directement</span></div>
+      </div></div>
+        <div class="cc-item" data-testid="cheat-card-15" data-level-tone="debutant" style="visibility: hidden;"><div class="cc-smear"></div><div class="cc-card cheat-card"><div class="cheat-index">Fiche 15</div>
+        <div class="cheat-title">Paradigmes de programmation</div>
+        <div class="cheat-row"><span class="cheat-code">Impératif</span><span class="cheat-desc">Suite d'instructions qui modifient l'état</span></div>
+        <div class="cheat-row"><span class="cheat-code">Objet</span><span class="cheat-desc">Données + méthodes regroupées en classes</span></div>
+        <div class="cheat-row"><span class="cheat-code">Fonctionnel</span><span class="cheat-desc">Composer des fonctions pures (map, filter, lambda)</span></div>
+      </div></div>
+        <div class="cc-item" data-testid="cheat-card-16" data-level-tone="intermediaire" style="visibility: hidden;"><div class="cc-smear"></div><div class="cc-card cheat-card"><div class="cheat-index">Fiche 16</div>
+        <div class="cheat-title">Tri Fusion</div>
+        <div class="cheat-row"><span class="cheat-code">O(n log n)</span><span class="cheat-desc">Complexité du tri fusion</span></div>
+        <div class="cheat-row"><span class="cheat-code">Diviser</span><span class="cheat-desc">Couper la liste en 2</span></div>
+        <div class="cheat-row"><span class="cheat-code">Régner</span><span class="cheat-desc">Trier chaque moitié récursivement</span></div>
+        <div class="cheat-row"><span class="cheat-code">Combiner</span><span class="cheat-desc">Fusionner les 2 moitiés triées</span></div>
+      </div></div>
+        <div class="cc-item" data-testid="cheat-card-17" data-level-tone="difficile" style="visibility: hidden;"><div class="cc-smear"></div><div class="cc-card cheat-card"><div class="cheat-index">Fiche 17</div>
+        <div class="cheat-title">Graphes</div>
+        <div class="cheat-row"><span class="cheat-code">graphe[sommet]</span><span class="cheat-desc">Liste des voisins (dico d'adjacence)</span></div>
+        <div class="cheat-row"><span class="cheat-code">deque() + popleft()</span><span class="cheat-desc">Parcours en largeur (BFS)</span></div>
+        <div class="cheat-row"><span class="cheat-code">Appel récursif</span><span class="cheat-desc">Parcours en profondeur (DFS)</span></div>
+        <div class="cheat-row"><span class="cheat-code">Dijkstra</span><span class="cheat-desc">Plus court chemin (poids ≥ 0)</span></div>
+      </div></div>
+        <div class="cc-item" data-testid="cheat-card-18" data-level-tone="debutant" style="visibility: hidden;"><div class="cc-smear"></div><div class="cc-card cheat-card"><div class="cheat-index">Fiche 18</div>
+        <div class="cheat-title">Programmation Dynamique</div>
+        <div class="cheat-row"><span class="cheat-code">if n in memo: return memo[n]</span><span class="cheat-desc">Mémoïsation (top-down)</span></div>
+        <div class="cheat-row"><span class="cheat-code">memo[n] = resultat</span><span class="cheat-desc">On mémorise avant de renvoyer</span></div>
+        <div class="cheat-row"><span class="cheat-code">table[i] = table[i-1] + ...</span><span class="cheat-desc">Tabulation (bottom-up)</span></div>
+        <div class="cheat-row"><span class="cheat-code">Sous-problèmes répétés</span><span class="cheat-desc">Signal pour penser "prog. dynamique"</span></div>
+      </div></div>
+        <div class="cc-item" data-testid="cheat-card-19" data-level-tone="debutant"><div class="cc-card cheat-card"><div class="cheat-index">Fiche 19</div>
+        <div class="cheat-title">SQL : Tables et données</div>
+        <div class="cheat-row"><span class="cheat-code">CREATE TABLE t (...)</span><span class="cheat-desc">Créer une table</span></div>
+        <div class="cheat-row"><span class="cheat-code">INTEGER, TEXT, REAL</span><span class="cheat-desc">Types de colonnes</span></div>
+        <div class="cheat-row"><span class="cheat-code">PRIMARY KEY</span><span class="cheat-desc">Identifiant unique</span></div>
+        <div class="cheat-row"><span class="cheat-code">NOT NULL</span><span class="cheat-desc">Valeur obligatoire</span></div>
+        <div class="cheat-row"><span class="cheat-code">DEFAULT 0</span><span class="cheat-desc">Valeur par défaut</span></div>
+        <div class="cheat-row"><span class="cheat-code">INSERT INTO t VALUES (...)</span><span class="cheat-desc">Ajouter une ligne</span></div>
+        <div class="cheat-row"><span class="cheat-code">UPDATE t SET a = 1 WHERE ...</span><span class="cheat-desc">Modifier des lignes</span></div>
+        <div class="cheat-row"><span class="cheat-code">DELETE FROM t WHERE ...</span><span class="cheat-desc">Supprimer des lignes</span></div>
+        <div class="cheat-row"><span class="cheat-code">DROP TABLE t</span><span class="cheat-desc">Supprimer la table</span></div>
+      </div></div>
+        <div class="cc-item" data-testid="cheat-card-20" data-level-tone="debutant"><div class="cc-card cheat-card"><div class="cheat-index">Fiche 20</div>
+        <div class="cheat-title">SQL : Requêtes et clés</div>
+        <div class="cheat-row"><span class="cheat-code">SELECT a, b FROM t</span><span class="cheat-desc">Choisir des colonnes</span></div>
+        <div class="cheat-row"><span class="cheat-code">WHERE a &gt; 5 AND b = 'x'</span><span class="cheat-desc">Filtrer</span></div>
+        <div class="cheat-row"><span class="cheat-code">ORDER BY a DESC</span><span class="cheat-desc">Trier</span></div>
+        <div class="cheat-row"><span class="cheat-code">LIMIT 3</span><span class="cheat-desc">Garder 3 lignes</span></div>
+        <div class="cheat-row"><span class="cheat-code">COUNT(*), AVG(a)</span><span class="cheat-desc">Calculer</span></div>
+        <div class="cheat-row"><span class="cheat-code">GROUP BY a</span><span class="cheat-desc">Calculer par groupe</span></div>
+        <div class="cheat-row"><span class="cheat-code">FOREIGN KEY (a) REFERENCES t(id)</span><span class="cheat-desc">Clé étrangère</span></div>
+        <div class="cheat-row"><span class="cheat-code">JOIN t2 ON t.a = t2.id</span><span class="cheat-desc">Relier deux tables</span></div>
+        <div class="cheat-row"><span class="cheat-code">LEFT JOIN</span><span class="cheat-desc">Garder les lignes sans lien</span></div>
+      </div></div>
+      </div>
+      <div class="cc-hint">
+        <button class="cc-arrow" data-dir="-1" aria-label="Fiche précédente" data-testid="cheat-prev-btn"><svg class=ico aria-hidden=true><use href=#i-arrow-left></use></svg></button>
+        <span>Glisse, scrolle ou utilise <svg class=ico aria-hidden=true><use href=#i-arrow-left></use></svg> <svg class=ico aria-hidden=true><use href=#i-arrow-right></use></svg></span>
+        <button class="cc-arrow" data-dir="1" aria-label="Fiche suivante" data-testid="cheat-next-btn"><svg class=ico aria-hidden=true><use href=#i-arrow-right></use></svg></button>
+      </div>
+      <div class="cc-progress"><i style="transform: scaleX(0);"></i></div>
+      <div class="cc-vignette"></div>
+    </div>
+  </section>
+
+  <!-- CONSOLE -->
+  <section class="block section console-block" id="section-console" data-testid="section-console">
+    <div class="wrap">
+      <div class="block-head">
+        <div>
+          <h2 class="block-title"><span class="split-line"><span data-line="">Console</span></span><span class="split-line"><span data-line="">Python <span id="pyodide-status" class="py-status idle" data-testid="pyodide-status">Python en attente</span></span></span></h2>
+        </div>
+        <p class="block-desc in" data-reveal="">Écris du code Python et exécute-le directement dans le navigateur : listes, fonctions, boucles, modules comme math ou random.</p>
+      </div>
+      <div class="console-workspace in" data-reveal="scale">
+        <div class="console-editor-pane">
+          <div class="pane-header">
+            <span class="pane-title"><svg class=ico aria-hidden=true><use href=#i-pencil></use></svg> Éditeur</span>
+            <div class="pane-actions">
+              <button class="icon-btn" onclick="clearEditor()" data-testid="console-clear-editor-btn">Effacer</button>
+              <button class="icon-btn" onclick="loadTemplate()" data-testid="console-template-btn">Template</button>
+              <button class="run-main-btn" onclick="runMain()" data-magnetic="" data-testid="console-run-btn"><svg class=ico aria-hidden=true><use href=#i-play></use></svg> Exécuter</button>
+            </div>
+          </div>
+          <div id="main-editor-wrap">
+          <textarea id="main-editor" spellcheck="false" data-testid="console-editor"># Bienvenue dans la console NSI Python !
+# Toutes les fonctionnalités Python 3 sont disponibles.
+
+import math
+import random
+
+# Exemple : liste avec compréhension
+carres = [i * i for i in range(1, 11)]
+print("Carrés de 1 à 10 :", carres)
+
+# Exemple : fonction
+def factorielle(n):
+    if n == 0:
+        return 1
+    return n * factorielle(n - 1)
+
+print("5! =", factorielle(5))
+print("√2 =", math.sqrt(2))
+print("Nombre aléatoire :", random.randint(1, 100))
+</textarea>
+          </div>
+        </div>
+        <div class="console-output-pane">
+          <div class="pane-header">
+            <span class="pane-title" style="color: var(--accent);"><svg class=ico aria-hidden=true><use href=#i-dot></use></svg> Sortie</span>
+            <button class="icon-btn" onclick="clearOutput()" data-testid="console-clear-output-btn">Effacer</button>
+          </div>
+          <div id="main-output" data-lenis-prevent style="color: var(--text-muted); font-style: italic;" data-testid="console-output">Lance ton code avec le bouton Exécuter…</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" data-testid="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <p class="footer-quote in" data-reveal="">S'entraîner reste la meilleure solution. <span style="color:var(--text-dim)">Python 3 • Terminale NSI</span></p>
+        <div class="footer-col in" data-reveal="" style="--d:.08s">
+          <h4>Explorer</h4>
+          <a href="#accueil" data-nav="accueil">Accueil</a>
+          <a href="#cours" data-nav="cours">Cours</a>
+          <a href="#exercices" data-nav="exercices">Exercices</a>
+        </div>
+        <div class="footer-col in" data-reveal="" style="--d:.16s">
+          <h4>Outils</h4>
+          <a href="#cheatsheet" data-nav="cheatsheet">Cheat Sheet</a>
+          <a href="#console" data-nav="console">Console Python</a>
+          <button class="reset-progress-link" onclick="resetProgress()" data-testid="reset-progress-btn">Réinitialiser ma progression</button>
+        </div>
+      </div>
+      <div class="footer-big" aria-hidden="true">Révise Python</div>
+      <div class="footer-bottom"><span>© NSI Python, révisions et entraînement</span><button onclick="navTo('hero')" data-testid="back-to-top-btn">Retour en haut <svg class=ico aria-hidden=true><use href=#i-arrow-up></use></svg></button></div>
+    </div>
+  </footer>
+</main>
+
+<!-- LECTEUR DE CHAPITRE -->
+<div id="lesson-detail" class="lesson-detail" role="dialog" aria-modal="false" aria-label="Chapitre" data-lenis-prevent="" data-testid="lesson-reader"></div>
+</body></html>
